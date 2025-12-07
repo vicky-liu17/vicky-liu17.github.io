@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
+/* Basic Layout */
+.homepage-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+    color: #2c3e50;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h2 {
+    color: #2980b9; /* Primary blue color */
+    margin-top: 30px;
+    margin-bottom: 15px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 25px 0;
 }
 
-.App-link {
-  color: #61dafb;
+/* Header Styles */
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.profile-header p {
+    color: #7f8c8d;
+    font-size: 1.1em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Skills Tags */
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.skill-tag {
+    background-color: #eaf2f8;
+    color: #2980b9;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+/* Portfolio Grid Layout */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Project Card Styles */
+.project-card {
+    border: 1px solid #ecf0f1;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background-color: #eee;
+}
+
+.card-content {
+    padding: 15px;
+}
+.card-content h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+    color: #34495e;
+}
+.details-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: bold;
+}
+.details-link:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #bdc3c7;
+    font-size: 0.8em;
 }
