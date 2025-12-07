@@ -26,6 +26,12 @@ const personalData = {
       degree: "High School Diploma",
       school: "City Science High School",
       note: "Focus on Physics and Mathematics"
+    },
+    {
+      year: "2015 — 2018",
+      degree: "High School Diploma",
+      school: "City Science High School",
+      note: "Focus on Physics and Mathematics"
     }
   ],
 
