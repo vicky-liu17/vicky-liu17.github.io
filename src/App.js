@@ -1,25 +1,19 @@
+// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './Homepage';
-import ProjectDetailPage from './ProjectDetailPage';
+import ProjectDetail from './ pages/ProjectDetail';
 
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="app-container">
         <Routes>
-          {/* Route for the Main Homepage */}
+          {/* 首页 */}
           <Route path="/" element={<Homepage />} />
           
-          {/* Dynamic Route for Project Details (captures the ID) */}
-          <Route path="/projects/:id" element={<ProjectDetailPage />} />
-          
-          {/* Fallback Route for 404 */}
-          <Route path="*" element={
-            <div style={{textAlign: 'center', marginTop: '50px'}}>
-              <h1>404 - Page Not Found</h1>
-            </div>
-          } />
+          {/* 详情页，:id 是动态参数 */}
+          <Route path="/projects/:id" element={<ProjectDetail />} />
         </Routes>
       </div>
     </Router>
