@@ -1,105 +1,34 @@
+// src/Homepage.js
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CiCircleInfo } from 'react-icons/ci';
 import { MdOutlineWorkOutline, MdDesignServices, MdSchool, MdWork } from 'react-icons/md';
+import { useLang } from './LanguageContext';
+import { translations } from './translations';
 import './Homepage.css';
 
-const personalData = {
-  name: "Yujie Liu",
-  contact: {
-    email: "yujieliu@kth.se",
-    phone: "(+86) 138-8847-6715",
-  },
-  intro: "I am a creative technologist and ML researcher bridging the gap between generative AI and human-centric interaction. Currently completing my MSc at KTH, I combine robust engineering logic with aesthetic intuition to transform complex algorithms into intuitive, tangible digital experiences.",
-  // Journey Data: Oldest (Left) -> Newest (Right)
-  journey: [
-    {
-      type: 'edu',
-      period: "2016 — 2020",
-      title: "BEng in Computer Science",
-      place: "The University of Hong Kong",
-      location: "Hong Kong"
-    },
-    {
-      type: 'edu',
-      period: "Fall 2018",
-      title: "Exchange Program",
-      place: "Nanyang Tech. Univ.",
-      location: "Singapore"
-    },
-    {
-      type: 'work',
-      period: "June 2019 — Aug 2019",
-      title: "Software Dev Intern",
-      place: "Alibaba Group",
-      location: "Hangzhou"
-    },
-    {
-      type: 'work',
-      period: "Sept 2020 — Oct 2021",
-      title: "Software Engineer",
-      place: "Alibaba Group (Fliggy)",
-      location: "Hangzhou"
-    },
-    {
-      type: 'edu',
-      period: "2023 — Present",
-      title: "MSc in Machine Learning",
-      place: "KTH Royal Institute",
-      location: "Stockholm"
-    },
-    {
-      type: 'work',
-      period: "June 2024 — Aug 2024",
-      title: "AI R&D Intern",
-      place: "Ericsson",
-      location: "Stockholm"
-    },
-    {
-      type: 'work',
-      period: "July 2025 — Dec 2025",
-      title: "Game Design Intern",
-      place: "NetEase, Inc.",
-      location: "Hangzhou"
-    }
-  ],
+// Static data that does NOT change with language (ids, images, types)
+const portfolioMeta = [
+  { id: 1, image: '/heart.png' },
+  { id: 2, image: '/banner.png' },
+  { id: 3, image: '/get-planned.png' },
+  { id: 4, image: '/law-concept.png' },
+];
 
-  portfolio: [
-    {
-      id: 1,
-      image: "/heart.png",
-      name: "Remnants of Love",
-      cat: "AI-Native Game",
-      desc: "Exploring LLM-driven semantic interaction in generative gaming."
-    },
-    {
-      id: 2,
-      image: "/banner.png",
-      name: "AI Piano Evaluator",
-      cat: "HAI & MUSIC TECH",
-      desc: "Exploring algorithm-driven visual feedback in interactive music education."
-    },
-    {
-      id: 3,
-      image: "/law-concept.png",
-      name: "Access Our Community",
-      cat: "Web Platform / HCI",
-      desc: "A real-time pro bono matching platform connecting lawyers with NGOs."
-    }
-  ],
-
-  skills: [
-  "PyTorch / LLMs", 
-  "React / TypeScript", 
-  "Flutter / Mobile Dev", 
-  "Three.js / WebGL", 
-  "FastAPI / Docker", 
-  "Human-AI Interaction"
-],
-};
+const journeyMeta = [
+  { type: 'edu' },
+  { type: 'edu' },
+  { type: 'work' },
+  { type: 'work' },
+  { type: 'edu' },
+  { type: 'work' },
+  { type: 'work' },
+];
 
 function Homepage() {
-  const { name, contact, intro, journey, skills, portfolio } = personalData;
+  const { lang } = useLang();
+  const t = translations[lang];
+
   const [activeSection, setActiveSection] = useState('about');
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isHamburgerMenu, setIsHamburgerMenu] = useState(false);
@@ -107,19 +36,17 @@ function Homepage() {
 
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
-    if (section) {
-      window.scrollTo({ top: section.offsetTop - 20, behavior: 'smooth' });
-    }
+    if (section) window.scrollTo({ top: section.offsetTop - 20, behavior: 'smooth' });
   };
 
   const toggleNav = () => setIsCollapsed(!isCollapsed);
   const toggleHamburgerMenu = () => setHamburgerMenuOpen(!hamburgerMenuOpen);
 
   useEffect(() => {
-    const checkWindowSize = () => setIsHamburgerMenu(window.innerWidth < 1024);
-    checkWindowSize();
-    window.addEventListener('resize', checkWindowSize);
-    return () => window.removeEventListener('resize', checkWindowSize);
+    const check = () => setIsHamburgerMenu(window.innerWidth < 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
   }, []);
 
   useEffect(() => {
@@ -148,11 +75,7 @@ function Homepage() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      },
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }),
       { threshold: 0.1 }
     );
     const sections = document.querySelectorAll('section');
@@ -161,14 +84,14 @@ function Homepage() {
   }, []);
 
   const navItems = [
-    { id: 'about', icon: <CiCircleInfo />, label: 'About' },
-    { id: 'works', icon: <MdDesignServices />, label: 'Portfolios' },
-    { id: 'journey', icon: <MdOutlineWorkOutline />, label: 'My Journey' },
+    { id: 'about',   icon: <CiCircleInfo />,          label: t.nav.about },
+    { id: 'works',   icon: <MdDesignServices />,       label: t.nav.portfolios },
+    { id: 'journey', icon: <MdOutlineWorkOutline />,   label: t.nav.journey },
   ];
 
   return (
     <div className="page-wrapper">
-      {/* Navigation Logic */}
+      {/* Navigation */}
       {isHamburgerMenu ? (
         <div className="hamburger-nav">
           <button className="hamburger-btn" onClick={toggleHamburgerMenu}>
@@ -220,17 +143,17 @@ function Homepage() {
         <section id="about" className="intro-section">
           <header className="site-header">
             <div className="header-content">
-              <h1 className="name">{name}</h1>
+              <h1 className="name">{t.name}</h1>
               <div className="contact-row">
-                <span>{contact.email}</span>
+                <span>{t.contact.email}</span>
                 <span className="dot">·</span>
-                <span>{contact.phone}</span>
+                <span>{t.contact.phone}</span>
               </div>
               <div className="intro-block">
-                <p>{intro}</p>
+                <p>{t.intro}</p>
                 <div className="compact-skills-wrapper">
-                  <span className="skills-label">Tech Stack:</span>
-                  {skills.map((skill, i) => (
+                  <span className="skills-label">{t.skillsLabel}</span>
+                  {t.skills.map((skill, i) => (
                     <span key={i} className="compact-skill-pill">{skill}</span>
                   ))}
                 </div>
@@ -243,62 +166,60 @@ function Homepage() {
         </section>
 
         <main>
-          {/* 2. Portfolio (Grid Layout) */}
+          {/* 2. Portfolio */}
           <section id="works" className="section-container">
             <div className="heading-wrapper">
-              <h2 className="section-heading">Selected Works</h2>
+              <h2 className="section-heading">{t.sectionWorks}</h2>
             </div>
-
             <div className="works-grid">
-              {portfolio.map((work) => (
-                <Link to={`/projects/${work.id}`} key={work.id} className="work-item">
-                  <div className="work-img-container">
-                    <img src={work.image} alt={work.name} />
-                  </div>
-                  <div className="work-info">
-                    <span className="work-cat">{work.cat}</span>
-                    <h4 className="work-title">{work.name}</h4>
-                    <p className="work-desc">{work.desc}</p>
-                  </div>
-                </Link>
-              ))}
+              {portfolioMeta.map((meta, i) => {
+                const work = t.portfolio[i];
+                return (
+                  <Link to={`/projects/${meta.id}`} key={meta.id} className="work-item">
+                    <div className="work-img-container">
+                      <img src={meta.image} alt={work.name} />
+                    </div>
+                    <div className="work-info">
+                      <span className="work-cat">{work.cat}</span>
+                      <h4 className="work-title">{work.name}</h4>
+                      <p className="work-desc">{work.desc}</p>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </section>
 
-          {/* 3. Combined Journey (Spaced Out) */}
+          {/* 3. Journey */}
           <section id="journey" className="section-container">
-            <h2 className="section-heading">My Journey</h2>
-
+            <h2 className="section-heading">{t.sectionJourney}</h2>
             <div className="journey-timeline">
               <div className="journey-track"></div>
-
-              {journey.map((item, i) => (
-                <div key={i} className={`journey-node ${item.type === 'edu' ? 'node-up' : 'node-down'}`}>
-                  {/* The Dot */}
-                  <div className="journey-marker">
-                    <span className="node-icon">
-                      {item.type === 'edu' ? <MdSchool /> : <MdWork />}
-                    </span>
+              {journeyMeta.map((meta, i) => {
+                const item = t.journey[i];
+                return (
+                  <div key={i} className={`journey-node ${meta.type === 'edu' ? 'node-up' : 'node-down'}`}>
+                    <div className="journey-marker">
+                      <span className="node-icon">
+                        {meta.type === 'edu' ? <MdSchool /> : <MdWork />}
+                      </span>
+                    </div>
+                    <div className="journey-card">
+                      <span className="j-period">{item.period}</span>
+                      <h3 className="j-title">{item.title}</h3>
+                      <div className="j-place">{item.place}</div>
+                      <span className="j-loc">{item.location}</span>
+                    </div>
+                    <div className="journey-line-connector"></div>
                   </div>
-
-                  {/* The Content Card */}
-                  <div className="journey-card">
-                    <span className="j-period">{item.period}</span>
-                    <h3 className="j-title">{item.title}</h3>
-                    <div className="j-place">{item.place}</div>
-                    <span className="j-loc">{item.location}</span>
-                  </div>
-
-                  {/* Connector */}
-                  <div className="journey-line-connector"></div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </section>
         </main>
 
         <footer className="site-footer">
-          <p>© 2025 Yujie Liu.</p>
+          <p>{t.footer}</p>
         </footer>
       </div>
     </div>

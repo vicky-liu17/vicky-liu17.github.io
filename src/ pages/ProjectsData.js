@@ -185,104 +185,107 @@ export const projectsData = [
     ]
   },
 
-  // =========================================================================
-  // Project 3: Components Demo (新样式展示)
-  // =========================================================================
 {
-  "id": 3,
-  "title": "Access Our Community (AOC)",
-  "category": "Social Impact Tech / HCI & Web Engineering",
-  "date": "March 2019",
-  "content": [
+  id: 3,
+  title: "GetPlanned — Intelligent Semantic Scheduling Engine & AI-Native Productivity Tool Research",
+  category: "AI-Native Interaction Design / Semantic Automated Scheduling System Research",
+  date: "March 2026",
+  content: [
     {
-      "type": "text",
-      "value": "**Digitalizing Justice: A Real-Time Pro Bono Matching Platform**"
+      type: "text",
+      value: "**Exploring Intent-Driven Interfaces: Redefining Task Management through Semantic Reasoning and Spatial Interaction**\n"
     },
     {
-      "type": "text",
-      "value": "### 1. Project Overview\n\n**Access Our Community (AOC)** is a web-based platform designed to revolutionize how legal professionals connect with pro bono opportunities. It serves as an evolution away from manual, email-based communication, aiming to decrease administrative overhead and increase access to justice for vulnerable communities.\n\n* **The Problem:** The traditional pro bono workflow is plagued by \"Email Spaghetti\"—long, non-real-time email chains that lead to missed opportunities and administrative bottlenecks for lawyers and NGOs alike.\n* **The Ecosystem:** The platform connects three key stakeholders: **NGOs** (Service Providers), **Lawyers** (Volunteers), and **Coordinators** (Admins), creating a unified portal for collaboration.\n* **Global Achievement:** This project participated in the **Global Legal Hackathon 2019**, successfully advancing as a **Global Finalist**, ranking among the top 12 teams worldwide."
+      type: "text",
+      value: "### 1. Project Background and Pain Points\n\nIn traditional scheduling software, users often fall into the trap of **low input efficiency** and **high maintenance costs**:\n\n* **Heavy Input:** Creating tasks requires manual entry of titles, categories, and precise times within complex UI hierarchies. This high-friction process consumes user effort before the plan even begins.\n* **Delayed Adjustments:** When plans change (e.g., a meeting is postponed), users must click into each task card to modify it. The lack of intuitive global adjustment methods causes software to degenerate into a rigid 'memo' rather than a flexible 'planner'.\n\n**GetPlanned** leverages AI to automate task entry and combines it with high-fidelity physical drag-and-drop interaction, achieving **'seamless adjustments'** in daily scheduling."
     },
     {
-      "type": "youtube",
-      "videoId": "c768LYh2Xz8",
-      "caption": "Project Introduction & User Journey: This video illustrates the \"Lucy, Justin, and Penny\" persona narrative."
+      type: "image-link",
+      src: "/get-planned.png",
+      link: "https://get-planned.vercel.app/",
+      caption: "Explore the Live Demo on Vercel (Note: Access may be restricted in Mainland China)."
     },
     {
-      "type": "text",
-      "value": "### 2. Core Interaction: The \"Three-Sided\" Market\n\nThe system architecture replaces linear communication with a **Centralized Hub Interaction Model**. The UX is designed around three distinct user journeys that interact seamlessly.\n\n**2.1 The Discovery Loop (For Lawyers)**\nLawyers (like the persona \"Lucy\") no longer need to parse through batch emails. The platform offers a **Real-Time Searchable Database**.\n\n* **Smart Filtering:** Lawyers can filter cases based on \"Interest,\" \"Skills,\" and \"Availability\".\n* **Instant Application:** The system reduces the cognitive load of finding work. A lawyer finds a case, applies, and the status updates instantly, preventing the frustration of applying for already-filled cases.\n\n**2.2 The Management Loop (For NGOs)**\nNGOs (like the persona \"Justin\") act as the \"Quest Givers.\"\n\n* **Screen & Upload:** NGOs screen legal needs and upload them as structured data entries rather than unstructured text in emails.\n* **Network Broadcasting:** Opportunities are shared instantly with their specific network of pro bono lawyers, increasing the \"Capacity\" of these organizations to do high-impact work.\n\n**2.3 The Oversight Loop (For Coordinators)**\nCoordinators (like \"Penny\") manage the firm's resources.\n\n* **Administrative Oversight:** They have a dashboard to approve matches, ensuring no conflict of interest before a lawyer takes a case."
+      type: "text",
+      value: "### 2. Project Overview\n\nGetPlanned is an AI-native scheduling tool built on **Large Language Models (LLMs)**. The project reconstructs the core chain of task management by:\n\n1.  **Natural Language Processing (NLP):** Performing deep intent parsing to transform vague text into structured data.\n2.  **Spatial Interaction:** Allowing users to reorganize schedules via high-frequency drag-and-drop actions.\n\nThis project validates the potential of LLMs in logical orchestration and solves interaction smoothness and accuracy issues through a **Semantic-Based Interaction System**."
     },
     {
-        type: "image",
-        src: "/structure.png",
-        caption: "The conceptual framework of the AOC platform, illustrating the transformation from systemic friction to data-driven social impact."
-      },
-    {
-      "type": "text",
-      "value": "### 3. System Architecture: Solving \"Systemic Friction\"\n\n**The Challenge: Latency & Information Asymmetry**\nPrior to AOC, the workflow was asynchronous. NGOs sent emails → Coordinators reviewed → Forwarded to Lawyers → Lawyers replied. This latency meant clients in need often waited too long.\n\n**3.1 Solution: End-to-End Matching System**\nWe implemented a **Single Portal Architecture**. By centralizing the data:\n\n* **Time Efficiency:** Pro bono lawyers save precious time by eliminating the need to manage email threads.\n* **Timely Access:** The community benefits from faster access to justice because the \"matching\" happens in real-time.\n\n**3.2 Solution: Data-Driven Impact (Analytics)**\nOne of the key technical features is the **Reporting Module**. The system automatically tracks hours and engagement. Users can generate reports to demonstrate their contributions to the community, turning abstract \"goodwill\" into quantifiable metrics."
+      type: "text",
+      value: "### 3. Core Technical Architecture\n\nI designed a dual-loop architecture of **'AI Automation + Manual Spatial Fine-tuning'**:\n\n* **Server-side Calibration:** To address LLMs’ time arithmetic hallucinations, I use the **Next.js backend runtime** to compute physical timelines, feeding precise anchors to the AI to ensure conflict-free schedules.\n* **Multidimensional Spatial Interaction Logic:**\n    * **Drag-to-Reschedule:** Supports physical drag across time buckets (Morning/Afternoon/Evening) and dates. The backend automatically recalculates sorting indices for second-level reorganization.\n    * **Drag-to-Duplicate:** A long-press triggered logic allowing users to 'throw' a task to the next day. The AI recognizes the intent, preserving attributes while updating the timestamp.\n* **Multi-Action Batching:** Supports complex 'Create, Delete, and Update' operations in a single command using a structured **JSON Schema** for deterministic output."
     },
     {
-      "type": "text",
-      "value": "### 4. Industry Recognition & Testimonials\n\nThe platform has been validated by high-profile adoption and feedback from government officials and international law firms.\n\n> \"We see much potential and merit in the adoption of technology solutions such as the AOC platform in the provision of pro bono community legal services. By effectively streamlining the process of matching and linking the pro bono lawyers with the service users, the AOC platform will not only enhance public access to legal advice services, but also bring convenience to participating lawyers and service providers.\"\n> — **Nicholas Chan**, Assistant Director of Administration at Chief Secretary for Administration's Office, Government of Hong Kong\n\n> \"As well as coordinating pro bono opportunities...I have a full workload of legal work and other corporate social responsibility initiatives to handle. So we're interested in working with our existing pro bono partners in trialling technology solutions like the AOC platform that can increase efficiency and streamline the process for connecting our lawyers with pro bono opportunities.\"\n> — **Emile McPhee**, Senior Associate and Chair of CCP Committee for pro bono and CSR activities at McCullough Robertson, Brisbane, Australia\n\n> \"Ashurst, like most law firms, do not have a pro bono team based in Asia. For us, our team is based in London and Sydney. This presents capacity, resourcing and time zone issues. We see the AOC platform as helping to fill those needs. AOC will be a much-needed addition to the pro bono environment in Asia.\"\n> — **Sarah Morton-Ramwell**, Partner and Global Head of Pro Bono Practice and Corporate Responsibility Programme at Ashurst, Sydney, Australia\n\n> \"We're proud that Access Our Community is led by one of our own pro bono committee members who has a track record for growing the network of in-house lawyers engaged in pro bono work. AOC will provide a much-needed platform for enabling lawyers to get easily connected and involved with pro bono opportunities.\"\n> — **Lin Shi**, President of Association of Corporate Counsel, Hong Kong\n\n> \"PathFinders is excited about the prospect of having an NGO-to-law firm matching platform.\"\n> — **Celine Dermine**, Access to Justice Programme Manager, PathFinders, Hong Kong"
+      type: "github-card",
+      repoName: "vicky-liu17/Get-Planned",
+      desc: "An AI-native scheduling ecosystem using a 'Semantic Reasoning + Backend Calibration' hybrid engine, built with Next.js, TypeScript, and LLM integration.",
+      link: "https://github.com/vicky-liu17/Get-Planned"
+    },
+    {
+      type: "text",
+      value: "### 4. Technical Challenges and HCI Deep Optimization\n\nTo achieve a commercial-grade tactile experience, I addressed key frontend interaction challenges:\n\n**A. Deadzone Algorithm for Long Press vs. Micro-Movement**\n> **Problem:** Human hands inevitably produce pixel-level micro-movements during long presses, causing traditional listeners to cancel prematurely.\n> **Solution:** I introduced a **Deadzone algorithm** using `useRef` to lock initial coordinates. By calculating displacement via the Pythagorean theorem, the long press is only invalidated if movement exceeds 10px. This aligns the interaction with human physiology.\n\n**B. High-Frequency Event Noise Reduction**\n* Applied **Debounce** and **Throttle** techniques to handle massive `PointerMove` events.\n* Ensured consistent **60fps rendering performance** even under complex schedule layouts."
+    },
+    {
+      type: "text",
+      value: "### 5. Core Mechanism: Semantic-Based Interaction (HAI-Centered)\n\nTo enhance the trustworthiness of **Human-AI Interaction (HAI)**, I implemented several key strategies:\n\n* **Deterministic Transformation:** AI anchors dates and estimates durations from vague descriptions (e.g., 'next Monday evening'). Reasoning is displayed via a **Typewriter Component** to establish algorithmic transparency.\n* **Multimodal Feedback Loop:**\n    * **Semantic Visual Enhancement:** A library of 40+ icons and a dynamic color system (e.g., Work-Blue, Health-Green). AI maps 'Laundry' to a `Shirt` icon automatically, reducing cognitive load.\n* **Intelligent Duration & Lock Mechanism:** Uses an `isEstimatedDuration` flag. AI proposes durations based on common sense (e.g., Gym 60min), while users maintain final authority via double-click corrections (**'AI Proposes, Human Decides'**)."
+    },
+    
+  {
+    "type": "image",
+    "src": "/planning-demo1.png",
+    "caption": "The minimalist initial interface of GetPlanned, showcasing a clean multi-day calendar layout with categorical filters (Work, Study, Health, etc.) ready for natural language input."
+  },
+  {
+    "type": "image",
+    "src": "/planning-demo2.png",
+    "caption": "Demonstrating the Natural Language Processing (NLP) input: a user enters a complex multi-task command ('have a meeting... then have dinner') directly into the semantic command bar."
+  },
+  {
+    "type": "image",
+    "src": "/planning-demo3.png",
+    "caption": "The AI-driven scheduling result: the system automatically parses the intent, calculates time slots for Wednesday (Mar 4), and provides a transparent reasoning text to explain the conflict-free arrangement."
+  } ,
+    {
+      type: "text",
+      value: "### 6. Technical Summary and Future Outlook\n\nGetPlanned tames non-deterministic generative capabilities into a rigorous productivity tool by combining polished HCI with backend logic.\n\n**Future Research Directions:**\n* **Multi-User Collaboration:** Exploring how AI agents can semantically negotiate across different user spaces to automatically align team meetings.\n* **Full Lifecycle Context Memory:** Integrating a **Vector Database (Vector DB)** to optimize time estimation models based on historical execution habits (actual vs. estimated duration)."
     }
   ]
 },
   {
-    id: 4,
-    title: "Remnants of Love",
-    category: "AI-Native Game / Technical Art Research",
-    date: "August 2025",
-    content: [
+    "id": 4,
+    "title": "Access Our Community (AOC)",
+    "category": "Social Impact Tech / HCI & Web Engineering",
+    "date": "March 2019",
+    "content": [
       {
-        type: "text",
-        value: "**Exploring Non-Deterministic Interaction and AI-Native Pipelines via Large Language Models**\n"
+        "type": "text",
+        "value": "**Digitalizing Justice: A Real-Time Pro Bono Matching Platform**"
       },
       {
-        type: "text",
-        value: "### 1. Project Overview\n\nRemnants of Love is a romance simulation game set in a fictional Victorian-era world. Deviating from the pre-scripted \"branching tree\" structures of traditional interactive fiction, our team investigates how Generative AI (AIGC) can reconstruct the game's core loop.\n\nPlayers must navigate a nightmare world, employing strategy and dialogue to conquer a heroine with split personalities. Our project not only validates the potential of Large Language Models (LLMs) in dynamic storytelling but also successfully constructs a deep interaction system based on semantic evaluation."
+        "type": "text",
+        "value": "### 1. Project Overview\n\n**Access Our Community (AOC)** is a web-based platform designed to revolutionize how legal professionals connect with pro bono opportunities. It serves as an evolution away from manual, email-based communication, aiming to decrease administrative overhead and increase access to justice for vulnerable communities.\n\n* **The Problem:** The traditional pro bono workflow is plagued by \"Email Spaghetti\"—long, non-real-time email chains that lead to missed opportunities and administrative bottlenecks for lawyers and NGOs alike.\n* **The Ecosystem:** The platform connects three key stakeholders: **NGOs** (Service Providers), **Lawyers** (Volunteers), and **Coordinators** (Admins), creating a unified portal for collaboration.\n* **Global Achievement:** This project participated in the **Global Legal Hackathon 2019**, successfully advancing as a **Global Finalist**, ranking among the top 12 teams worldwide."
       },
       {
-        type: "youtube",
-        videoId: "yjyoXjUFatU",
-        caption: "Promotional Video (PV): This video is AI-generated."
+        "type": "youtube",
+        "videoId": "c768LYh2Xz8",
+        "caption": "Project Introduction & User Journey: This video illustrates the \"Lucy, Justin, and Penny\" persona narrative."
       },
       {
-        type: "youtube",
-        videoId: "EVNUL4buzpA",
-        caption: "Opening: This video is AI-generated."
-      },
-      {
-        type: "text",
-        value: "### 2. Core Gameplay Loop\n\nWe designed a dual-loop gameplay structure where **Macro-Exploration (The Outer Loop)** and **Micro-Interaction (The Inner Loop)** are intrinsically linked:\n\n* **Macro-Exploration:** Players navigate a 3D open world to gather narrative fragments and NPC-preferred gifts, facilitating long-term information accumulation.\n* **Micro-Interaction:** Players engage directly with the NPC through three core mechanics: Dialogue, Gifting, and Action.\n* **The Synergy:** Exploration provides the necessary context for interaction. A deeper understanding of the character—derived from the outer loop—allows for more informed dialogue choices, significantly accelerating player progression."
+        "type": "text",
+        "value": "### 2. Core Interaction: The \"Three-Sided\" Market\n\nThe system architecture replaces linear communication with a **Centralized Hub Interaction Model**. The UX is designed around three distinct user journeys that interact seamlessly.\n\n**2.1 The Discovery Loop (For Lawyers)**\nLawyers (like the persona \"Lucy\") no longer need to parse through batch emails. The platform offers a **Real-Time Searchable Database**.\n\n* **Smart Filtering:** Lawyers can filter cases based on \"Interest,\" \"Skills,\" and \"Availability\".\n* **Instant Application:** The system reduces the cognitive load of finding work. A lawyer finds a case, applies, and the status updates instantly, preventing the frustration of applying for already-filled cases.\n\n**2.2 The Management Loop (For NGOs)**\nNGOs (like the persona \"Justin\") act as the \"Quest Givers.\"\n\n* **Screen & Upload:** NGOs screen legal needs and upload them as structured data entries rather than unstructured text in emails.\n* **Network Broadcasting:** Opportunities are shared instantly with their specific network of pro bono lawyers, increasing the \"Capacity\" of these organizations to do high-impact work.\n\n**2.3 The Oversight Loop (For Coordinators)**\nCoordinators (like \"Penny\") manage the firm's resources.\n\n* **Administrative Oversight:** They have a dashboard to approve matches, ensuring no conflict of interest before a lawyer takes a case."
       },
       {
         type: "image",
-        src: "/outside.png",
-        caption: "Macro-Exploration: Navigating the Victorian nightmare world."
+        src: "/structure.png",
+        caption: "The conceptual framework of the AOC platform, illustrating the transformation from systemic friction to data-driven social impact."
       },
       {
-        type: "image",
-        src: "/emotion.png",
-        caption: "Micro-Interaction: Real-time emotional feedback loop."
+        "type": "text",
+        "value": "### 3. System Architecture: Solving \"Systemic Friction\"\n\n**The Challenge: Latency & Information Asymmetry**\nPrior to AOC, the workflow was asynchronous. NGOs sent emails → Coordinators reviewed → Forwarded to Lawyers → Lawyers replied. This latency meant clients in need often waited too long.\n\n**3.1 Solution: End-to-End Matching System**\nWe implemented a **Single Portal Architecture**. By centralizing the data:\n\n* **Time Efficiency:** Pro bono lawyers save precious time by eliminating the need to manage email threads.\n* **Timely Access:** The community benefits from faster access to justice because the \"matching\" happens in real-time.\n\n**3.2 Solution: Data-Driven Impact (Analytics)**\nOne of the key technical features is the **Reporting Module**. The system automatically tracks hours and engagement. Users can generate reports to demonstrate their contributions to the community, turning abstract \"goodwill\" into quantifiable metrics."
       },
       {
-        type: "text",
-        value: "### 3. Core Mechanics: LLM-Driven \"Semantic Gameplay\"\n\nTo address the issues of \"uncontrollability\" and \"lack of objectives\" common in generative AI games, we designed a closed-loop interaction system based on **Semantic Scoring**.\n\n* **Non-Deterministic Dialogue:** Players are no longer confined to fixed dialogue options; instead, they utilize **Open-Ended Input** to interact freely. The LLM acts as a judge, evaluating the **'Semantic Fitness'** of the player's input against the character's persona on a scale of 1 to 5.\n* **State-Driven Emotion System:** We implemented a state machine governed by latent variables (Anger, Boredom, Joy, Shyness). High semantic scores not only increase **Affinity** but also shift her mood toward positive states (e.g., Joy or Shyness), while low scores trigger negative shifts. \n* **Dynamic Interaction Logic:** The NPC's emotional state directly dictates her behavioral logic. For instance, in a **'Joyful'** state, she is more receptive to intimate requests like 'Holding Hands' or 'Hugging'; conversely, in an **'Angry'** state, she will actively reject the same actions, creating a genuine **'Fail State'** based on emotional resonance.\n* **Fragmented Narrative & Long-term Memory:** Leveraging **Prompt Engineering**, key items (e.g., a Teddy Bear) are embedded as **Memory Anchors**. Players must synthesize clues gathered from exploration to navigate the NPC's emotional landscape and guide the conversation effectively."
-      },
-      {
-        type: "image",
-        src: "/UI.png",
-        caption: "System Architecture: From user input to emotional state transition."
-      },
-      {
-        type: "text",
-        value: "### 4. Technical Highlights: AI-Assisted 3D Pipeline\n\nTo address the bottleneck of high asset production costs, we constructed an automated Text-to-3D Scene workflow, achieving 90% AI generation for outdoor architectural assets.\n\n* **Step 1: Text-to-Image:** Using fine-tuned Stable Diffusion models to batch-generate Victorian-style orthographic views.\n* **Step 2: Automated 3D Reconstruction:** Converting 2D images into base mesh models with automated decimation and UV reconstruction scripts.\n* **Step 3: CV Integration (Breakthrough):** We integrated OpenCV-Python with the **Segment Anything Model (SAM)** to enhance details. The system automatically identifies \"window\" regions, generates emission masks, and implements batch \"nighttime lighting\" effects within Unity."
-      },
-
-      {
-        type: "image",
-        src: "/model.png",
-        caption: "AI-assisted 3D off-site map generation pipeline using SAM and Stable Diffusion."
+        "type": "text",
+        "value": "### 4. Industry Recognition & Testimonials\n\nThe platform has been validated by high-profile adoption and feedback from government officials and international law firms.\n\n> \"We see much potential and merit in the adoption of technology solutions such as the AOC platform in the provision of pro bono community legal services. By effectively streamlining the process of matching and linking the pro bono lawyers with the service users, the AOC platform will not only enhance public access to legal advice services, but also bring convenience to participating lawyers and service providers.\"\n> — **Nicholas Chan**, Assistant Director of Administration at Chief Secretary for Administration's Office, Government of Hong Kong\n\n> \"As well as coordinating pro bono opportunities...I have a full workload of legal work and other corporate social responsibility initiatives to handle. So we're interested in working with our existing pro bono partners in trialling technology solutions like the AOC platform that can increase efficiency and streamline the process for connecting our lawyers with pro bono opportunities.\"\n> — **Emile McPhee**, Senior Associate and Chair of CCP Committee for pro bono and CSR activities at McCullough Robertson, Brisbane, Australia\n\n> \"Ashurst, like most law firms, do not have a pro bono team based in Asia. For us, our team is based in London and Sydney. This presents capacity, resourcing and time zone issues. We see the AOC platform as helping to fill those needs. AOC will be a much-needed addition to the pro bono environment in Asia.\"\n> — **Sarah Morton-Ramwell**, Partner and Global Head of Pro Bono Practice and Corporate Responsibility Programme at Ashurst, Sydney, Australia\n\n> \"We're proud that Access Our Community is led by one of our own pro bono committee members who has a track record for growing the network of in-house lawyers engaged in pro bono work. AOC will provide a much-needed platform for enabling lawyers to get easily connected and involved with pro bono opportunities.\"\n> — **Lin Shi**, President of Association of Corporate Counsel, Hong Kong\n\n> \"PathFinders is excited about the prospect of having an NGO-to-law firm matching platform.\"\n> — **Celine Dermine**, Access to Justice Programme Manager, PathFinders, Hong Kong"
       }
     ]
-  }
+  },
+
 ];

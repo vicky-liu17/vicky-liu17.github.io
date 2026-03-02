@@ -1,0 +1,44 @@
+/* src/LanguageSwitcher.css */
+.lang-switcher {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 16px;
+  border-radius: 30px;
+  border: 1px solid #444;
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #888;
+}
+
+.lang-switcher:hover {
+  border-color: #e74c3c;
+  box-shadow: 0 0 16px rgba(231, 76, 60, 0.25);
+  transform: translateY(-2px);
+}
+
+.lang-option {
+  transition: color 0.25s;
+}
+
+.lang-active {
+  color: #e74c3c;
+}
+
+.lang-divider {
+  color: #444;
+  font-weight: 300;
+}

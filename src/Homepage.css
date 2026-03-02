@@ -1,3 +1,4 @@
+/* Homepage.css - Styles for the main landing page of the portfolio website, including layout, typography, and visual design for the intro section, selected works grid, and combined journey timeline. */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
 
 /* --- Variables --- */
@@ -15,6 +16,7 @@
 /* --- Base Styles --- */
 body {
   margin: 0;
+  /* Balanced Red Glows on Body background */
   background: 
     radial-gradient(circle at 5% 50%, rgba(231, 76, 60, 0.08) 0%, transparent 35%),
     radial-gradient(circle at 95% 40%, rgba(231, 76, 60, 0.08) 0%, transparent 35%),
@@ -38,7 +40,17 @@ body {
   width: 100%;
   max-width: 1100px;
   margin-left: 220px;
-  background: rgba(20, 20, 20, 0.95);
+  
+  /* --- RESTORED GRID TEXTURE --- */
+  background: 
+    /* Subtle radial highlights for depth */
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.01) 0%, transparent 50%),
+    /* The Grid Pattern (Lines) */
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255, 255, 255, 0.03) 19px, rgba(255, 255, 255, 0.03) 20px),
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255, 255, 255, 0.03) 19px, rgba(255, 255, 255, 0.03) 20px),
+    /* Base Dark Paper Color */
+    rgba(20, 20, 20, 0.95);
+    
   padding: 50px 60px;
   box-shadow: 0 0 50px rgba(0,0,0,0.6);
   border-top: 4px solid var(--color-accent);
@@ -183,16 +195,15 @@ body.hamburger-active .drawer-nav { display: none; }
 /* --- Portfolio (Grid Layout) --- */
 .heading-wrapper { display: flex; justify-content: space-between; align-items: baseline; }
 
-/* Grid Container */
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
-  gap: 30px; /* Space between cards */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 30px; 
   padding-bottom: 20px;
 }
 
 .work-item {
-  width: 100%; /* Fill the grid cell */
+  width: 100%; 
   text-decoration: none; color: inherit;
   transition: transform 0.3s;
   display: block;
@@ -215,7 +226,7 @@ body.hamburger-active .drawer-nav { display: none; }
   position: relative;
   display: flex;
   justify-content: space-between; 
-  /* Increased Spacing: Top padding handles content above line, Margin top pushes away from Title */
+  /* Large top padding for "breathing room" */
   padding: 140px 20px 60px 0; 
   margin-top: 50px; 
   margin-bottom: 20px;
@@ -271,7 +282,7 @@ body.hamburger-active .drawer-nav { display: none; }
 .journey-line-connector {
   position: absolute; width: 1px;
   background: rgba(231, 76, 60, 0.3);
-  height: 80px; /* Increased connector length */
+  height: 80px; 
   left: 50%; z-index: 0;
 }
 
@@ -281,11 +292,11 @@ body.hamburger-active .drawer-nav { display: none; }
 }
 
 /* UP NODE positions */
-.node-up .journey-card { bottom: 65px; } /* Pushed higher */
+.node-up .journey-card { bottom: 65px; } 
 .node-up .journey-line-connector { bottom: 15px; top: auto; }
 
 /* DOWN NODE positions */
-.node-down .journey-card { top: 65px; } /* Pushed lower */
+.node-down .journey-card { top: 65px; } 
 .node-down .journey-line-connector { top: 15px; bottom: auto; }
 
 .journey-node:hover .journey-card { transform: scale(1.05); }
