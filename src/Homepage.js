@@ -160,7 +160,7 @@ function Homepage() {
               </div>
             </div>
             <div className="profile-photo">
-              <img src="/personal-photo.png" alt="Profile" />
+              <img src="/personal-photo2.png" alt="Profile" />
             </div>
           </header>
         </section>
