@@ -153,12 +153,12 @@ export const projectsData = [
       },
       {
         "type": "image",
-        "src": "/piano-UI1.png",
+        "src": "/Piano-UI1.png",
         "caption": "The gamified main interface allows users to upload the standard sample and their practice recording, featuring a high-contrast neon design to enhance user engagement."
       },
       {
         "type": "image",
-        "src": "/piano-UI2.png",
+        "src": "/Piano-UI2.png",
         "caption": "The comprehensive analysis dashboard displays the evaluation rank (e.g., A-), sync rate, and a detailed Piano Roll overlay with a rhythm timeline that visualizes tempo stability."
       },
       {
