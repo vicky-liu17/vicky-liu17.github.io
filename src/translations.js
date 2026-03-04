@@ -16,13 +16,12 @@ export const translations = {
             'Python / Java',
             'PyTorch / LLMs',
             'Prompting / RAG',
+            'Stable Diffusion / ComfyUI ',
             'FastAPI / Vector DB',
-            'Docker / Cloud',
             'React / TypeScript',
             'Next.js / Tailwind',
             'Flutter / Mobile',
-            'HCI / Prototyping',
-            'SQL / NoSQL'
+            'HCI / Prototyping'
         ],
         sectionWorks: 'Selected Works',
         sectionJourney: 'My Journey',
@@ -57,15 +56,14 @@ export const translations = {
         skillsLabel: '技术栈：',
         skills: [
             'Python / Java',
-            'PyTorch / 深度学习',
-            '大模型 / 提示工程',
-            'RAG / 向量数据库',
-            'FastAPI / Docker',
-            '云原生 / 数据库',
+            'PyTorch / LLMs',
+            'Prompting / RAG',
+            'Stable Diffusion / ComfyUI ',
+            'FastAPI / Vector DB',
             'React / TypeScript',
-            'Next.js / 全栈开发',
-            'Flutter / 移动端',
-            'HCI / 交互原型'
+            'Next.js / Tailwind',
+            'Flutter / Mobile',
+            'HCI / Prototyping'
         ],
         sectionWorks: '精选作品',
         sectionJourney: '我的历程',
@@ -112,12 +110,12 @@ export const translations = {
                     {
                         type: 'youtube',
                         videoId: 'yjyoXjUFatU',
-                        caption: '宣传视频（PV）：本视频由 AI 生成。',
+                        caption: '宣传视频（PV）：本视频由 AI 生成。注：YouTube 视频在中国大陆地区访问可能受限。',
                     },
                     {
                         type: 'youtube',
                         videoId: 'EVNUL4buzpA',
-                        caption: '开场动画：本视频由 AI 生成。',
+                        caption: '开场动画：本视频由 AI 生成。注：YouTube 视频在中国大陆地区访问可能受限。',
                     },
                     {
                         type: 'text',
@@ -462,7 +460,7 @@ GetPlanned 通过将精致的 HCI 与后端逻辑相结合，将非确定性的�
                     {
                         "type": "youtube",
                         "videoId": "c768LYh2Xz8",
-                        "caption": "项目演示：通过模拟不同用户角色展现平台的核心交互逻辑与价值主张。"
+                        "caption": "项目演示：通过模拟不同用户角色展现平台的核心交互逻辑与价值主张。注：YouTube 视频在中国大陆地区访问可能受限。"
                     },
                     {
                         "type": "text",

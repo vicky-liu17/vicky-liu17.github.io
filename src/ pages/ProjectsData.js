@@ -21,12 +21,12 @@ export const projectsData = [
       {
         type: "youtube",
         videoId: "yjyoXjUFatU",
-        caption: "Promotional Video (PV): This video is AI-generated."
+        caption: "Promotional Video (PV): This video is AI-generated. Note: Access to YouTube may be restricted in Mainland China."
       },
       {
         type: "youtube",
         videoId: "EVNUL4buzpA",
-        caption: "Opening: This video is AI-generated."
+        caption: "Opening: This video is AI-generated. Note: Access to YouTube may be restricted in Mainland China."
       },
       {
         "type": "text",
@@ -185,70 +185,70 @@ export const projectsData = [
     ]
   },
 
-{
-  id: 3,
-  title: "GetPlanned — Intelligent Semantic Scheduling Engine & AI-Native Productivity Tool Research",
-  category: "AI-Native Interaction Design / Semantic Automated Scheduling System Research",
-  date: "March 2026",
-  content: [
-    {
-      type: "text",
-      value: "**Exploring Intent-Driven Interfaces: Redefining Task Management through Semantic Reasoning and Spatial Interaction**\n"
-    },
-    {
-      type: "text",
-      value: "### 1. Project Background and Pain Points\n\nIn traditional scheduling software, users often fall into the trap of **low input efficiency** and **high maintenance costs**:\n\n* **Heavy Input:** Creating tasks requires manual entry of titles, categories, and precise times within complex UI hierarchies. This high-friction process consumes user effort before the plan even begins.\n* **Delayed Adjustments:** When plans change (e.g., a meeting is postponed), users must click into each task card to modify it. The lack of intuitive global adjustment methods causes software to degenerate into a rigid 'memo' rather than a flexible 'planner'.\n\n**GetPlanned** leverages AI to automate task entry and combines it with high-fidelity physical drag-and-drop interaction, achieving **'seamless adjustments'** in daily scheduling."
-    },
-    {
-      type: "image-link",
-      src: "/get-planned.png",
-      link: "https://get-planned.vercel.app/",
-      caption: "Explore the Live Demo on Vercel (Note: Access may be restricted in Mainland China)."
-    },
-    {
-      type: "text",
-      value: "### 2. Project Overview\n\nGetPlanned is an AI-native scheduling tool built on **Large Language Models (LLMs)**. The project reconstructs the core chain of task management by:\n\n1.  **Natural Language Processing (NLP):** Performing deep intent parsing to transform vague text into structured data.\n2.  **Spatial Interaction:** Allowing users to reorganize schedules via high-frequency drag-and-drop actions.\n\nThis project validates the potential of LLMs in logical orchestration and solves interaction smoothness and accuracy issues through a **Semantic-Based Interaction System**."
-    },
-    {
-      type: "text",
-      value: "### 3. Core Technical Architecture\n\nI designed a dual-loop architecture of **'AI Automation + Manual Spatial Fine-tuning'**:\n\n* **Server-side Calibration:** To address LLMs’ time arithmetic hallucinations, I use the **Next.js backend runtime** to compute physical timelines, feeding precise anchors to the AI to ensure conflict-free schedules.\n* **Multidimensional Spatial Interaction Logic:**\n    * **Drag-to-Reschedule:** Supports physical drag across time buckets (Morning/Afternoon/Evening) and dates. The backend automatically recalculates sorting indices for second-level reorganization.\n    * **Drag-to-Duplicate:** A long-press triggered logic allowing users to 'throw' a task to the next day. The AI recognizes the intent, preserving attributes while updating the timestamp.\n* **Multi-Action Batching:** Supports complex 'Create, Delete, and Update' operations in a single command using a structured **JSON Schema** for deterministic output."
-    },
-    {
-      type: "github-card",
-      repoName: "vicky-liu17/Get-Planned",
-      desc: "An AI-native scheduling ecosystem using a 'Semantic Reasoning + Backend Calibration' hybrid engine, built with Next.js, TypeScript, and LLM integration.",
-      link: "https://github.com/vicky-liu17/Get-Planned"
-    },
-    {
-      type: "text",
-      value: "### 4. Technical Challenges and HCI Deep Optimization\n\nTo achieve a commercial-grade tactile experience, I addressed key frontend interaction challenges:\n\n**A. Deadzone Algorithm for Long Press vs. Micro-Movement**\n> **Problem:** Human hands inevitably produce pixel-level micro-movements during long presses, causing traditional listeners to cancel prematurely.\n> **Solution:** I introduced a **Deadzone algorithm** using `useRef` to lock initial coordinates. By calculating displacement via the Pythagorean theorem, the long press is only invalidated if movement exceeds 10px. This aligns the interaction with human physiology.\n\n**B. High-Frequency Event Noise Reduction**\n* Applied **Debounce** and **Throttle** techniques to handle massive `PointerMove` events.\n* Ensured consistent **60fps rendering performance** even under complex schedule layouts."
-    },
-    {
-      type: "text",
-      value: "### 5. Core Mechanism: Semantic-Based Interaction (HAI-Centered)\n\nTo enhance the trustworthiness of **Human-AI Interaction (HAI)**, I implemented several key strategies:\n\n* **Deterministic Transformation:** AI anchors dates and estimates durations from vague descriptions (e.g., 'next Monday evening'). Reasoning is displayed via a **Typewriter Component** to establish algorithmic transparency.\n* **Multimodal Feedback Loop:**\n    * **Semantic Visual Enhancement:** A library of 40+ icons and a dynamic color system (e.g., Work-Blue, Health-Green). AI maps 'Laundry' to a `Shirt` icon automatically, reducing cognitive load.\n* **Intelligent Duration & Lock Mechanism:** Uses an `isEstimatedDuration` flag. AI proposes durations based on common sense (e.g., Gym 60min), while users maintain final authority via double-click corrections (**'AI Proposes, Human Decides'**)."
-    },
-    
   {
-    "type": "image",
-    "src": "/planning-demo1.png",
-    "caption": "The minimalist initial interface of GetPlanned, showcasing a clean multi-day calendar layout with categorical filters (Work, Study, Health, etc.) ready for natural language input."
+    id: 3,
+    title: "GetPlanned — Intelligent Semantic Scheduling Engine & AI-Native Productivity Tool Research",
+    category: "AI-Native Interaction Design / Semantic Automated Scheduling System Research",
+    date: "March 2026",
+    content: [
+      {
+        type: "text",
+        value: "**Exploring Intent-Driven Interfaces: Redefining Task Management through Semantic Reasoning and Spatial Interaction**\n"
+      },
+      {
+        type: "text",
+        value: "### 1. Project Background and Pain Points\n\nIn traditional scheduling software, users often fall into the trap of **low input efficiency** and **high maintenance costs**:\n\n* **Heavy Input:** Creating tasks requires manual entry of titles, categories, and precise times within complex UI hierarchies. This high-friction process consumes user effort before the plan even begins.\n* **Delayed Adjustments:** When plans change (e.g., a meeting is postponed), users must click into each task card to modify it. The lack of intuitive global adjustment methods causes software to degenerate into a rigid 'memo' rather than a flexible 'planner'.\n\n**GetPlanned** leverages AI to automate task entry and combines it with high-fidelity physical drag-and-drop interaction, achieving **'seamless adjustments'** in daily scheduling."
+      },
+      {
+        type: "image-link",
+        src: "/get-planned.png",
+        link: "https://get-planned.vercel.app/",
+        caption: "Explore the Live Demo on Vercel (Note: Access may be restricted in Mainland China)."
+      },
+      {
+        type: "text",
+        value: "### 2. Project Overview\n\nGetPlanned is an AI-native scheduling tool built on **Large Language Models (LLMs)**. The project reconstructs the core chain of task management by:\n\n1.  **Natural Language Processing (NLP):** Performing deep intent parsing to transform vague text into structured data.\n2.  **Spatial Interaction:** Allowing users to reorganize schedules via high-frequency drag-and-drop actions.\n\nThis project validates the potential of LLMs in logical orchestration and solves interaction smoothness and accuracy issues through a **Semantic-Based Interaction System**."
+      },
+      {
+        type: "text",
+        value: "### 3. Core Technical Architecture\n\nI designed a dual-loop architecture of **'AI Automation + Manual Spatial Fine-tuning'**:\n\n* **Server-side Calibration:** To address LLMs’ time arithmetic hallucinations, I use the **Next.js backend runtime** to compute physical timelines, feeding precise anchors to the AI to ensure conflict-free schedules.\n* **Multidimensional Spatial Interaction Logic:**\n    * **Drag-to-Reschedule:** Supports physical drag across time buckets (Morning/Afternoon/Evening) and dates. The backend automatically recalculates sorting indices for second-level reorganization.\n    * **Drag-to-Duplicate:** A long-press triggered logic allowing users to 'throw' a task to the next day. The AI recognizes the intent, preserving attributes while updating the timestamp.\n* **Multi-Action Batching:** Supports complex 'Create, Delete, and Update' operations in a single command using a structured **JSON Schema** for deterministic output."
+      },
+      {
+        type: "github-card",
+        repoName: "vicky-liu17/Get-Planned",
+        desc: "An AI-native scheduling ecosystem using a 'Semantic Reasoning + Backend Calibration' hybrid engine, built with Next.js, TypeScript, and LLM integration.",
+        link: "https://github.com/vicky-liu17/Get-Planned"
+      },
+      {
+        type: "text",
+        value: "### 4. Technical Challenges and HCI Deep Optimization\n\nTo achieve a commercial-grade tactile experience, I addressed key frontend interaction challenges:\n\n**A. Deadzone Algorithm for Long Press vs. Micro-Movement**\n> **Problem:** Human hands inevitably produce pixel-level micro-movements during long presses, causing traditional listeners to cancel prematurely.\n> **Solution:** I introduced a **Deadzone algorithm** using `useRef` to lock initial coordinates. By calculating displacement via the Pythagorean theorem, the long press is only invalidated if movement exceeds 10px. This aligns the interaction with human physiology.\n\n**B. High-Frequency Event Noise Reduction**\n* Applied **Debounce** and **Throttle** techniques to handle massive `PointerMove` events.\n* Ensured consistent **60fps rendering performance** even under complex schedule layouts."
+      },
+      {
+        type: "text",
+        value: "### 5. Core Mechanism: Semantic-Based Interaction (HAI-Centered)\n\nTo enhance the trustworthiness of **Human-AI Interaction (HAI)**, I implemented several key strategies:\n\n* **Deterministic Transformation:** AI anchors dates and estimates durations from vague descriptions (e.g., 'next Monday evening'). Reasoning is displayed via a **Typewriter Component** to establish algorithmic transparency.\n* **Multimodal Feedback Loop:**\n    * **Semantic Visual Enhancement:** A library of 40+ icons and a dynamic color system (e.g., Work-Blue, Health-Green). AI maps 'Laundry' to a `Shirt` icon automatically, reducing cognitive load.\n* **Intelligent Duration & Lock Mechanism:** Uses an `isEstimatedDuration` flag. AI proposes durations based on common sense (e.g., Gym 60min), while users maintain final authority via double-click corrections (**'AI Proposes, Human Decides'**)."
+      },
+
+      {
+        "type": "image",
+        "src": "/planning-demo1.png",
+        "caption": "The minimalist initial interface of GetPlanned, showcasing a clean multi-day calendar layout with categorical filters (Work, Study, Health, etc.) ready for natural language input."
+      },
+      {
+        "type": "image",
+        "src": "/planning-demo2.png",
+        "caption": "Demonstrating the Natural Language Processing (NLP) input: a user enters a complex multi-task command ('have a meeting... then have dinner') directly into the semantic command bar."
+      },
+      {
+        "type": "image",
+        "src": "/planning-demo3.png",
+        "caption": "The AI-driven scheduling result: the system automatically parses the intent, calculates time slots for Wednesday (Mar 4), and provides a transparent reasoning text to explain the conflict-free arrangement."
+      },
+      {
+        type: "text",
+        value: "### 6. Technical Summary and Future Outlook\n\nGetPlanned tames non-deterministic generative capabilities into a rigorous productivity tool by combining polished HCI with backend logic.\n\n**Future Research Directions:**\n* **Multi-User Collaboration:** Exploring how AI agents can semantically negotiate across different user spaces to automatically align team meetings.\n* **Full Lifecycle Context Memory:** Integrating a **Vector Database (Vector DB)** to optimize time estimation models based on historical execution habits (actual vs. estimated duration)."
+      }
+    ]
   },
-  {
-    "type": "image",
-    "src": "/planning-demo2.png",
-    "caption": "Demonstrating the Natural Language Processing (NLP) input: a user enters a complex multi-task command ('have a meeting... then have dinner') directly into the semantic command bar."
-  },
-  {
-    "type": "image",
-    "src": "/planning-demo3.png",
-    "caption": "The AI-driven scheduling result: the system automatically parses the intent, calculates time slots for Wednesday (Mar 4), and provides a transparent reasoning text to explain the conflict-free arrangement."
-  } ,
-    {
-      type: "text",
-      value: "### 6. Technical Summary and Future Outlook\n\nGetPlanned tames non-deterministic generative capabilities into a rigorous productivity tool by combining polished HCI with backend logic.\n\n**Future Research Directions:**\n* **Multi-User Collaboration:** Exploring how AI agents can semantically negotiate across different user spaces to automatically align team meetings.\n* **Full Lifecycle Context Memory:** Integrating a **Vector Database (Vector DB)** to optimize time estimation models based on historical execution habits (actual vs. estimated duration)."
-    }
-  ]
-},
   {
     "id": 4,
     "title": "Access Our Community (AOC)",
@@ -266,7 +266,7 @@ export const projectsData = [
       {
         "type": "youtube",
         "videoId": "c768LYh2Xz8",
-        "caption": "Project Introduction & User Journey: This video illustrates the \"Lucy, Justin, and Penny\" persona narrative."
+        "caption": "Project Introduction & User Journey: This video illustrates the \"Lucy, Justin, and Penny\" persona narrative. Note: Access to YouTube may be restricted in Mainland China."
       },
       {
         "type": "text",
