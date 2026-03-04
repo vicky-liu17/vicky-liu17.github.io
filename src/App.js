@@ -1,8 +1,7 @@
-// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './Homepage';
-import ProjectDetail from './ pages/ProjectDetail';   // ← 确认你磁盘上是 src/pages/ProjectDetail.js
+import ProjectDetail from './ pages/ProjectDetail'; // 确认路径正确
 import { LanguageProvider } from './LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 

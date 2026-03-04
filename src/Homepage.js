@@ -9,10 +9,10 @@ import './Homepage.css';
 
 // Static data that does NOT change with language (ids, images, types)
 const portfolioMeta = [
-  { id: 1, image: '/heart.png' },
-  { id: 2, image: '/banner.png' },
-  { id: 3, image: '/get-planned.png' },
-  { id: 4, image: '/law-concept.png' },
+  { id: 1, image: `${process.env.PUBLIC_URL}/heart.png` },
+  { id: 2, image: `${process.env.PUBLIC_URL}/banner.png` },
+  { id: 3, image: `${process.env.PUBLIC_URL}/get-planned.png` },
+  { id: 4, image: `${process.env.PUBLIC_URL}/law-concept.png` },
 ];
 
 const journeyMeta = [
@@ -160,7 +160,7 @@ function Homepage() {
               </div>
             </div>
             <div className="profile-photo">
-              <img src="/personal-photo2.png" alt="Profile" />
+              <img src={`${process.env.PUBLIC_URL}/personal-photo2.png`} alt="Profile" />
             </div>
           </header>
         </section>
