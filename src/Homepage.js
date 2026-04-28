@@ -9,20 +9,21 @@ import './Homepage.css';
 
 // Static data that does NOT change with language (ids, images, types)
 const portfolioMeta = [
-  { id: 1, image: `${process.env.PUBLIC_URL}/heart.png` },
-  { id: 2, image: `${process.env.PUBLIC_URL}/banner.png` },
-  { id: 3, image: `${process.env.PUBLIC_URL}/get-planned.png` },
-  { id: 4, image: `${process.env.PUBLIC_URL}/law-concept.png` },
+  { id: 1, image: `${process.env.PUBLIC_URL}/follo-poster.png` },
+  { id: 2, image: `${process.env.PUBLIC_URL}/heart.png` },
+  { id: 3, image: `${process.env.PUBLIC_URL}/banner.png` },
+  { id: 4, image: `${process.env.PUBLIC_URL}/law-concept.png` }
 ];
 
 const journeyMeta = [
-  { type: 'edu' },
-  { type: 'edu' },
-  { type: 'work' },
-  { type: 'work' },
-  { type: 'edu' },
-  { type: 'work' },
-  { type: 'work' },
+  { type: 'work' }, // 2026年3月 — 至今 (HCI科研实习生)
+  { type: 'work' }, // 2025年7月 — 12月 (游戏设计实习生)
+  { type: 'work' }, // 2024年6月 — 8月 (ML科研实习生)
+  { type: 'edu' },  // 2023 — 至今 (机器学习硕士)
+  { type: 'work' }, // 2020年9月 — 2021年10月 (软件工程师)
+  { type: 'work' }, // 2019年6月 — 8月 (软件开发实习生)
+  { type: 'edu' },  // 2018年秋 (交换生项目)
+  { type: 'edu' }   // 2016 — 2020 (计算机科学学士)
 ];
 
 function Homepage() {
@@ -193,24 +194,29 @@ function Homepage() {
           {/* 3. Journey */}
           <section id="journey" className="section-container">
             <h2 className="section-heading">{t.sectionJourney}</h2>
-            <div className="journey-timeline">
-              <div className="journey-track"></div>
+            
+            <div className="vertical-timeline">
+              <div className="v-track"></div>
+              
               {journeyMeta.map((meta, i) => {
                 const item = t.journey[i];
+                // 偶数排左边，奇数排右边
+                const isLeft = i % 2 === 0; 
+                
                 return (
-                  <div key={i} className={`journey-node ${meta.type === 'edu' ? 'node-up' : 'node-down'}`}>
-                    <div className="journey-marker">
-                      <span className="node-icon">
-                        {meta.type === 'edu' ? <MdSchool /> : <MdWork />}
-                      </span>
+                  <div key={i} className={`v-node ${isLeft ? 'v-left' : 'v-right'}`}>
+                    <div className="v-marker">
+                      {meta.type === 'edu' ? <MdSchool /> : <MdWork />}
                     </div>
-                    <div className="journey-card">
-                      <span className="j-period">{item.period}</span>
-                      <h3 className="j-title">{item.title}</h3>
-                      <div className="j-place">{item.place}</div>
-                      <span className="j-loc">{item.location}</span>
+                    
+                    <div className="v-card">
+                      <span className="v-period">{item.period}</span>
+                      <h3 className="v-title">{item.title}</h3>
+                      <div className="v-place">{item.place}</div>
+                      <span className="v-loc">{item.location}</span>
+                      {/* 如果未来你想在 translations.js 里加描述，直接在这里取消注释即可： */}
+                      {/* {item.desc && <p className="v-desc">{item.desc}</p>} */}
                     </div>
-                    <div className="journey-line-connector"></div>
                   </div>
                 );
               })}

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Follo App - Embedded</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* 隐藏滚动条但保留滚动功能 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* 毛玻璃效果强化 */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* 页面切换动画 */
+        .page-enter {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 滑动卡片的过渡效果 */
+        .swipe-transition {
+            transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        
+        /* 对话气泡动态浮出动画 */
+        .chat-anim {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+</head>
+<body class="bg-[#F2F2F7] w-full h-screen m-0 p-0 overflow-hidden font-sans selection:bg-blue-200">
+
+    <div class="relative w-full h-full flex flex-col">
+        
+        <header class="absolute top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/60 pb-2">
+            <div class="h-12 flex justify-between items-end px-6 pb-1 text-black">
+                <div class="text-[15px] font-semibold tracking-tight" id="clock">16:07</div>
+                <div class="flex items-center space-x-1.5 pb-0.5">
+                    <i data-lucide="signal" class="w-4 h-4"></i>
+                    <i data-lucide="wifi" class="w-4 h-4"></i>
+                    <i data-lucide="battery-full" class="w-5 h-5"></i>
+                </div>
+            </div>
+
+            <div class="h-11 flex justify-between items-center px-4 mt-1">
+                <button class="w-8 h-8 rounded-full bg-gray-200 overflow-hidden active:scale-95 transition-transform">
+                    <img src="https://api.dicebear.com/7.x/notionists/svg?seed=FolloUser&backgroundColor=e2e8f0" alt="Avatar" class="w-full h-full object-cover">
+                </button>
+                <h1 id="nav-title" class="text-[17px] font-semibold text-gray-900 tracking-tight">Follo</h1>
+                <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 active:bg-gray-200 transition-colors">
+                    <i data-lucide="bell" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-y-auto hide-scrollbar pt-[120px] pb-[100px] px-4 relative" id="main-content">
+            
+            <div id="page-follo" class="page-enter flex flex-col min-h-[calc(100%-20px)] relative">
+                <div class="flex-1 pb-20">
+                    
+                    <div id="pending-task-card" class="bg-white/90 backdrop-blur-md rounded-2xl p-4 ring-1 ring-blue-500/30 shadow-[0_8px_30px_rgba(0,122,255,0.15)] flex flex-col relative overflow-hidden group mb-5 shrink-0 mx-1 mt-1 transition-all duration-300 transform origin-top">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold text-blue-500 uppercase tracking-wider bg-blue-50 px-2 py-0.5 rounded">待确认日程</span>
+                            <button id="btn-cancel-task" class="text-gray-400 hover:text-red-500 transition-colors p-1 -mt-1 -mr-1 rounded-full">
+                                <i data-lucide="x" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                        
+                        <div id="pending-task-content" class="bg-gray-50 rounded-xl p-3 border border-gray-100 cursor-text active:bg-gray-200 transition-colors mb-3 shadow-inner relative overflow-hidden group/edit">
+                            <div class="absolute top-2 right-2 opacity-0 group-hover/edit:opacity-100 transition-opacity">
+                                <i data-lucide="edit-3" class="w-3.5 h-3.5 text-gray-400"></i>
+                            </div>
+                            <p class="text-xs text-blue-500 font-semibold mb-1">明天 15:00 - 16:30</p>
+                            <h4 class="font-medium text-gray-900 text-sm">项目一期评审会</h4>
+                            <p class="text-[11px] text-gray-500 mt-1 flex items-center">
+                                <i data-lucide="map-pin" class="w-3 h-3 mr-1 text-gray-400"></i> 2号会议室
+                            </p>
+                        </div>
+                        
+                        <button id="btn-confirm-task" class="w-full bg-[#007AFF] hover:bg-blue-600 text-white text-[13px] font-medium py-2 rounded-xl shadow-sm shadow-blue-500/30 transition-transform active:scale-[0.98] flex items-center justify-center">
+                            确认并创建日程
+                        </button>
+                    </div>
+                    
+                    <div class="flex flex-col space-y-4 px-1">
+                        <div class="self-end bg-[#007AFF] text-white px-4 py-2.5 rounded-[18px] rounded-tr-[4px] max-w-[85%] shadow-sm relative">
+                            <p class="text-[14px] leading-relaxed">帮我定个明天下午3点的项目评审会，在2号会议室，大概一个半小时。</p>
+                        </div>
+                        
+                        <div class="self-start w-full max-w-[95%]">
+                            <div class="flex items-start space-x-2.5 mb-2">
+                                <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-[#007AFF] to-[#34C759] flex items-center justify-center text-white shrink-0 shadow-sm mt-0.5">
+                                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                                </div>
+                                <p class="text-[14px] text-gray-700 leading-relaxed flex-1 pt-0.5">
+                                    好的，已为您识别信息并起草了日程卡片，请在上方确认。<br>
+                                    <span class="text-[12px] text-gray-500 mt-1 block">💡 如果您想调整时间或地点，可以直接点击卡片修改。</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="chat-success-flow" class="hidden flex-col space-y-4 px-1 mt-4">
+                        <div class="self-end bg-[#007AFF] text-white px-4 py-2.5 rounded-[18px] rounded-tr-[4px] max-w-[85%] shadow-sm relative opacity-0 transform translate-y-4 chat-anim">
+                            <p class="text-[14px] leading-relaxed">已确认卡片内容，创建吧。</p>
+                        </div>
+                        
+                        <div class="self-start w-full max-w-[95%] opacity-0 transform translate-y-4 chat-anim">
+                            <div class="flex items-start space-x-2.5 mb-2">
+                                <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-[#007AFF] to-[#34C759] flex items-center justify-center text-white shrink-0 shadow-sm mt-0.5">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <div class="flex-1 pt-0.5">
+                                    <p class="text-[14px] text-gray-700 leading-relaxed mb-2.5">
+                                        ✅ 创建成功！已为您锁定明天 15:00 的日历。
+                                    </p>
+                                    <button id="btn-jump-schedule" class="bg-blue-50/80 border border-blue-100 hover:bg-blue-100 text-blue-600 px-3 py-2 rounded-xl text-[13px] font-medium flex items-center active:bg-blue-200 transition-colors shadow-sm">
+                                        <i data-lucide="calendar" class="w-4 h-4 mr-1.5"></i>
+                                        在日程中查看此任务
+                                        <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="sticky bottom-1 w-full z-40 px-2 mt-auto">
+                    <div class="bg-white/85 backdrop-blur-xl rounded-full p-1.5 shadow-[0_4px_20px_rgba(0,0,0,0.1)] border border-gray-200/50 flex items-center relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-cyan-100/40 to-transparent pointer-events-none"></div>
+                        
+                        <div class="w-7 h-7 rounded-full hover:bg-gray-100 flex items-center justify-center shrink-0 cursor-pointer transition-colors mr-1">
+                            <i data-lucide="plus" class="w-4 h-4 text-gray-500"></i>
+                        </div>
+
+                        <div class="w-8 h-8 rounded-full bg-cyan-50 flex items-center justify-center shrink-0 shadow-sm relative cursor-pointer active:scale-90 transition-transform">
+                            <div class="absolute inset-0 rounded-full border border-cyan-400 animate-ping opacity-20"></div>
+                            <i data-lucide="audio-lines" class="w-4 h-4 text-cyan-600"></i>
+                        </div>
+                        <div class="flex-1 px-2.5">
+                            <span class="text-[12px] text-gray-400 font-medium tracking-wide">按住说话...</span>
+                        </div>
+                        <div class="w-7 h-7 rounded-full bg-gray-50 flex items-center justify-center shrink-0 cursor-pointer border border-gray-100 mr-1">
+                            <i data-lucide="keyboard" class="w-3.5 h-3.5 text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page-schedule" class="hidden space-y-4">
+                <div class="bg-white rounded-[20px] p-5 shadow-sm">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-semibold text-gray-900">2026年3月</h3>
+                        <div class="flex space-x-2">
+                            <button class="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center"><i data-lucide="chevron-left" class="w-4 h-4 text-gray-600"></i></button>
+                            <button class="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center"><i data-lucide="chevron-right" class="w-4 h-4 text-gray-600"></i></button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-400 mb-2 px-1">
+                        <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+                    </div>
+                    <div class="flex justify-between text-sm font-medium text-gray-800 px-1">
+                        <span class="text-gray-300">15</span><span>16</span><span class="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center -mt-1 -ml-1 shadow-sm">17</span><span>18</span><span>19</span><span>20</span><span>21</span>
+                    </div>
+                </div>
+
+                <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider pl-2 mt-6">今日动态沙盘 & 待办</h4>
+                
+                <div class="relative pl-6 border-l-2 border-gray-200 ml-4 space-y-6">
+                    
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-4 bg-blue-500 w-3 h-3 rounded-full border-4 border-[#F2F2F7] z-20"></div>
+                        
+                        <div class="relative rounded-2xl shadow-sm overflow-hidden bg-gray-100">
+                            
+                            <div class="absolute inset-0 flex justify-between z-0">
+                                <button id="btn-trigger-ai-chat" class="w-16 bg-[#007AFF] flex flex-col items-center justify-center text-white active:bg-blue-600 transition-colors">
+                                    <i data-lucide="sparkles" class="w-5 h-5 mb-1"></i>
+                                    <span class="text-[10px] font-medium">Follo</span>
+                                </button>
+                                <button class="w-16 bg-red-500 flex flex-col items-center justify-center text-white active:bg-red-600 transition-colors">
+                                    <i data-lucide="trash-2" class="w-5 h-5 mb-1"></i>
+                                    <span class="text-[10px] font-medium">删除</span>
+                                </button>
+                            </div>
+
+                            <div id="swipe-surface" class="relative bg-white p-4 z-10 flex items-start swipe-transition cursor-grab active:cursor-grabbing transition-colors duration-300">
+                                
+                                <div id="todo-checkbox-1" class="relative w-[18px] h-[18px] rounded-full border-[1.5px] border-gray-300 mr-3 mt-1 shrink-0 flex items-center justify-center cursor-pointer hover:border-blue-400 transition-colors z-20">
+                                    <div id="check-icon-wrapper-1" class="absolute inset-0 rounded-full bg-blue-500 flex items-center justify-center opacity-0 transition-opacity duration-200 pointer-events-none">
+                                        <i data-lucide="check" class="w-2.5 h-2.5 text-white"></i>
+                                    </div>
+                                </div>
+
+                                <div id="todo-content-click" class="flex-1 cursor-text">
+                                    <p class="text-xs text-blue-500 font-semibold mb-1">10:00 - 14:30</p>
+                                    <h4 id="todo-title-1" class="font-medium text-gray-900 text-sm transition-all duration-300">核心架构设计图绘制</h4>
+                                    <p class="text-[11px] text-gray-500 mt-1">工位 · 高强度脑力输出</p>
+                                </div>
+                                
+                                <div class="absolute right-2 top-1/2 -translate-y-1/2 opacity-30 flex items-center space-x-0.5">
+                                    <div class="w-1 h-3 bg-gray-300 rounded-full"></div>
+                                    <div class="w-1 h-3 bg-gray-300 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative opacity-60">
+                        <div class="absolute -left-[31px] top-4 bg-gray-300 w-3 h-3 rounded-full border-4 border-[#F2F2F7]"></div>
+                        <div class="bg-gray-100 rounded-2xl p-4 border border-gray-200/50 flex items-start">
+                            <div class="w-[18px] h-[18px] rounded-full border-[1.5px] border-gray-300 mr-3 mt-1 shrink-0 flex items-center justify-center bg-gray-200"></div>
+                            <div>
+                                <p class="text-xs text-gray-400 font-semibold mb-1">15:00 - 16:30</p>
+                                <h4 class="font-medium text-gray-500 text-sm line-through decoration-gray-400 flex items-center">
+                                    产研部门迭代规划会议
+                                    <span class="text-[10px] text-orange-500 ml-2 bg-orange-50 px-1.5 py-0.5 rounded not-italic no-underline">已转异步</span>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="newly-created-task" class="relative hidden">
+                        <div class="absolute -left-[31px] top-4 bg-blue-500 w-3 h-3 rounded-full border-4 border-[#F2F2F7] z-20"></div>
+                        <div class="bg-blue-50/50 rounded-2xl p-4 border border-blue-200 flex items-start ring-1 ring-blue-500/20 shadow-sm animate-pulse">
+                            <div class="w-[18px] h-[18px] rounded-full border-[1.5px] border-gray-300 mr-3 mt-1 shrink-0"></div>
+                            <div>
+                                <p class="text-xs text-blue-600 font-semibold mb-1">明天 15:00 - 16:30</p>
+                                <h4 class="font-medium text-blue-900 text-sm">项目一期评审会</h4>
+                                <p class="text-[11px] text-blue-600/70 mt-1 flex items-center">
+                                    <i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> 2号会议室
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <nav id="bottom-tab-bar" class="absolute bottom-0 w-full pb-8 pt-3 px-4 glass-effect border-t border-white/60 shadow-[0_-4px_20px_rgba(0,0,0,0.03)] z-40 transition-transform duration-300">
+            <div class="flex justify-center items-end relative gap-12">
+                <button class="tab-btn flex flex-col items-center justify-center flex-1 max-w-[80px] space-y-1 text-blue-500 transition-colors" data-target="follo" data-title="Follo">
+                    <i data-lucide="sparkles" class="w-6 h-6 transition-transform scale-110"></i>
+                    <span class="text-[10px] font-medium scale-90">Follo</span>
+                </button>
+                <button class="tab-btn flex flex-col items-center justify-center flex-1 max-w-[80px] space-y-1 text-gray-400 hover:text-gray-900 transition-colors" data-target="schedule" data-title="日程">
+                    <i data-lucide="calendar-days" class="w-6 h-6 transition-transform"></i>
+                    <span class="text-[10px] font-medium scale-90">日程</span>
+                </button>
+            </div>
+        </nav>
+
+        <div id="keyboard-drawer" class="absolute bottom-0 w-full z-[70] transform translate-y-full transition-transform duration-300 ease-out shadow-[0_-10px_30px_rgba(0,0,0,0.1)]">
+            <div id="keyboard-overlay" class="fixed inset-0 bg-black/10 -z-10 opacity-0 transition-opacity hidden"></div>
+            
+            <div class="bg-[#F2F2F7] rounded-t-[1.5rem] flex flex-col overflow-hidden border-t border-white/60 relative">
+                <div class="w-full flex justify-center py-2 bg-white/50 cursor-grab active:cursor-grabbing">
+                    <div class="w-10 h-1.5 bg-gray-300 rounded-full"></div>
+                </div>
+                
+                <div class="px-4 py-3 bg-white/80 border-b border-gray-200/50 flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 shrink-0">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    </div>
+                    <div class="flex-1">
+                        <input type="text" placeholder="告诉 Follo 你想怎么修改..." class="w-full bg-transparent text-sm text-gray-800 placeholder-gray-400 outline-none" disabled>
+                    </div>
+                    <button class="text-blue-500 p-1"><i data-lucide="arrow-up-circle" class="w-6 h-6"></i></button>
+                </div>
+
+                <div class="flex items-center space-x-4 px-5 py-2.5 bg-white">
+                    <i data-lucide="calendar" class="w-5 h-5 text-gray-500 hover:text-blue-500"></i>
+                    <i data-lucide="map-pin" class="w-5 h-5 text-gray-500 hover:text-blue-500"></i>
+                    <i data-lucide="hash" class="w-5 h-5 text-gray-500 hover:text-blue-500"></i>
+                    <i data-lucide="flag" class="w-5 h-5 text-gray-500 hover:text-blue-500"></i>
+                </div>
+
+                <div class="h-[250px] bg-[#D1D5DB] w-full flex flex-col justify-end pb-8 pt-2 px-1 space-y-2 relative pointer-events-none">
+                     <div class="flex justify-center space-x-1 px-1"><div class="h-11 w-[9%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[9%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[9%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[9%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[9%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[9%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[9%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[9%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[9%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[9%] bg-white rounded-md shadow-sm"></div></div>
+                     <div class="flex justify-center space-x-1 px-4"><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div></div>
+                     <div class="flex justify-center space-x-1 px-1"><div class="h-11 w-[15%] bg-[#AEB3BE] rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[10%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[15%] bg-[#AEB3BE] rounded-md shadow-sm"></div></div>
+                     <div class="flex justify-center space-x-1 px-1"><div class="h-11 w-[20%] bg-[#AEB3BE] rounded-md shadow-sm"></div><div class="h-11 w-[50%] bg-white rounded-md shadow-sm"></div><div class="h-11 w-[20%] bg-[#AEB3BE] rounded-md shadow-sm"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-task-chat" class="absolute inset-0 bg-[#F2F2F7] z-[60] flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out shadow-[-10px_0_30px_rgba(0,0,0,0.1)]">
+            <div class="h-[104px] pt-[52px] px-3 flex items-center justify-between bg-white/90 backdrop-blur-xl border-b border-gray-200/60 shrink-0 z-20">
+                <button id="btn-back-task-chat" class="flex items-center text-blue-500 active:opacity-60 transition-opacity pl-1">
+                    <i data-lucide="chevron-left" class="w-6 h-6 -ml-1"></i>
+                    <span class="text-[15px] font-medium">日程</span>
+                </button>
+                <div class="flex items-center space-x-1.5 absolute left-1/2 -translate-x-1/2">
+                    <span class="text-[14px] font-bold text-gray-900 tracking-wide">Follo 协作</span>
+                </div>
+                <div class="w-16"></div>
+            </div>
+            <div class="flex-1 overflow-y-auto hide-scrollbar px-4 py-6 space-y-5">
+                <div class="flex justify-end mb-6">
+                    <div class="bg-white rounded-[16px] p-3 shadow-sm border border-gray-100 max-w-[85%] relative">
+                        <div class="absolute -top-2 -left-2 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center shadow-sm">
+                            <i data-lucide="paperclip" class="w-3 h-3 text-blue-600"></i>
+                        </div>
+                        <p class="text-[10px] text-gray-400 font-semibold mb-1">已发送任务卡片</p>
+                        <h4 class="font-medium text-gray-900 text-sm">核心架构设计图绘制</h4>
+                        <p class="text-[11px] text-gray-500 mt-0.5">今天 10:00 - 14:30</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-2.5">
+                    <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-[#007AFF] to-[#34C759] flex items-center justify-center text-white shrink-0 shadow-sm mt-0.5">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="bg-white text-gray-700 text-[13px] leading-relaxed p-3.5 rounded-[18px] rounded-tl-[4px] shadow-sm inline-block border border-gray-50">
+                            我注意到您正在进行这项目标。考虑到您当前的精力消耗，您需要我：<br><br>
+                            1. 帮您拆解为 3 个番茄钟，并在间隙播放白噪音？<br>
+                            2. 或者在内网为您检索相关的架构设计参考资料？
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 pb-8 shrink-0 bg-gradient-to-t from-[#F2F2F7] via-[#F2F2F7] to-transparent">
+                <div class="bg-white/85 backdrop-blur-xl rounded-full p-1.5 shadow-[0_4px_20px_rgba(0,0,0,0.08)] border border-gray-200/50 flex items-center justify-between relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-blue-100/50 to-transparent pointer-events-none"></div>
+                    <div class="w-7 h-7 rounded-full hover:bg-gray-100 flex items-center justify-center shrink-0 cursor-pointer transition-colors mr-1">
+                        <i data-lucide="plus" class="w-4 h-4 text-gray-500"></i>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center shrink-0 shadow-sm relative cursor-pointer active:scale-90 transition-transform">
+                        <div class="absolute inset-0 rounded-full border border-blue-400 animate-ping opacity-30"></div>
+                        <i data-lucide="audio-lines" class="w-4 h-4 text-blue-500"></i>
+                    </div>
+                    <div class="flex-1 px-3">
+                        <span class="text-[12px] text-gray-400 font-medium">说出你的需求...</span>
+                    </div>
+                    <div class="w-7 h-7 rounded-full bg-gray-50 flex items-center justify-center shrink-0 cursor-pointer border border-gray-100">
+                        <i data-lucide="keyboard" class="w-3.5 h-3.5 text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // 初始化 Lucide 图标
+        lucide.createIcons();
+
+        // 时钟
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // ==========================================
+        // 基础 Tab 切换
+        // ==========================================
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const pages = {
+            'follo': document.getElementById('page-follo'),
+            'schedule': document.getElementById('page-schedule')
+        };
+        const navTitle = document.getElementById('nav-title');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-target');
+                const title = btn.getAttribute('data-title');
+                navTitle.textContent = title;
+
+                Object.values(pages).forEach(page => {
+                    page.classList.add('hidden');
+                    page.classList.remove('page-enter');
+                });
+                pages[target].classList.remove('hidden');
+                void pages[target].offsetWidth; 
+                pages[target].classList.add('page-enter');
+
+                tabBtns.forEach(b => {
+                    const icon = b.querySelector('svg');
+                    if (b === btn) {
+                        b.classList.remove('text-gray-400');
+                        b.classList.add('text-blue-500');
+                        if (icon) icon.classList.add('scale-110');
+                    } else {
+                        b.classList.add('text-gray-400');
+                        b.classList.remove('text-blue-500');
+                        if (icon) icon.classList.remove('scale-110');
+                    }
+                });
+            });
+        });
+
+        // ==========================================
+        // Follo 预定任务流程互动逻辑 (悬浮卡片 -> 确认 -> 跳转)
+        // ==========================================
+        const pendingTaskCard = document.getElementById('pending-task-card');
+        const btnConfirmTask = document.getElementById('btn-confirm-task');
+        const btnCancelTask = document.getElementById('btn-cancel-task');
+        const pendingTaskContent = document.getElementById('pending-task-content');
+        const chatSuccessFlow = document.getElementById('chat-success-flow');
+        const btnJumpSchedule = document.getElementById('btn-jump-schedule');
+        const newlyCreatedTask = document.getElementById('newly-created-task');
+
+        // 1. 点击悬浮卡片唤起键盘编辑
+        pendingTaskContent.addEventListener('click', () => {
+            openKeyboard();
+        });
+
+        // 2. 取消/删除悬浮卡片
+        btnCancelTask.addEventListener('click', () => {
+            pendingTaskCard.style.opacity = '0';
+            setTimeout(() => { pendingTaskCard.style.display = 'none'; }, 300);
+        });
+
+        // 3. 点击【确认创建】走完流程
+        btnConfirmTask.addEventListener('click', () => {
+            // 收起悬浮卡片 (带平滑折叠动画)
+            pendingTaskCard.style.transform = 'scaleY(0)';
+            pendingTaskCard.style.opacity = '0';
+            pendingTaskCard.style.height = pendingTaskCard.offsetHeight + 'px';
+            setTimeout(() => {
+                pendingTaskCard.style.height = '0px';
+                pendingTaskCard.style.marginBottom = '0px';
+                pendingTaskCard.style.marginTop = '0px';
+            }, 10);
+            
+            // 显示成功对话流
+            setTimeout(() => {
+                pendingTaskCard.style.display = 'none';
+                chatSuccessFlow.classList.remove('hidden');
+                chatSuccessFlow.classList.add('flex');
+                
+                // 逐个触发气泡弹出动画
+                const animElems = chatSuccessFlow.querySelectorAll('.chat-anim');
+                animElems.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.remove('opacity-0', 'translate-y-4');
+                    }, index * 400); // 错开 400ms 显示
+                });
+                
+                // 滚动聊天到底部
+                const mainContent = document.getElementById('main-content');
+                setTimeout(() => {
+                    mainContent.scrollTo({ top: mainContent.scrollHeight, behavior: 'smooth' });
+                }, 800);
+                
+                // 将刚创建的任务注入到日程页展示 (移除 hidden)
+                newlyCreatedTask.classList.remove('hidden');
+                
+            }, 300);
+        });
+
+        // 4. 点击【在日程中查看】快捷跳转
+        btnJumpSchedule.addEventListener('click', () => {
+            const scheduleTabBtn = document.querySelector('.tab-btn[data-target="schedule"]');
+            if(scheduleTabBtn) scheduleTabBtn.click();
+            
+            // 滚动到新插入任务的地方
+            const mainContent = document.getElementById('main-content');
+            setTimeout(() => {
+                mainContent.scrollTo({ top: mainContent.scrollHeight, behavior: 'smooth' });
+            }, 100);
+        });
+
+
+        // ==========================================
+        // 待办卡片复选框点击逻辑
+        // ==========================================
+        const todoCheckbox1 = document.getElementById('todo-checkbox-1');
+        const checkIconWrapper1 = document.getElementById('check-icon-wrapper-1');
+        const todoTitle1 = document.getElementById('todo-title-1');
+        const swipeSurface = document.getElementById('swipe-surface');
+
+        todoCheckbox1.addEventListener('click', (e) => {
+            e.stopPropagation(); // 防止冒泡触发键盘打开
+            
+            // 切换外框颜色
+            todoCheckbox1.classList.toggle('border-gray-300');
+            todoCheckbox1.classList.toggle('border-blue-500');
+            
+            // 切换对勾显隐
+            checkIconWrapper1.classList.toggle('opacity-0');
+            
+            // 标题加删除线与变灰
+            todoTitle1.classList.toggle('line-through');
+            todoTitle1.classList.toggle('text-gray-400');
+            
+            // 卡片背景微微变灰代表完成
+            swipeSurface.classList.toggle('bg-gray-50');
+            swipeSurface.classList.toggle('bg-white');
+        });
+
+
+        // ==========================================
+        // Swipe 卡片滑动逻辑 (支持鼠标与触摸)
+        // ==========================================
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        const handleDragStart = (e) => {
+            // 若点击的是复选框区域，则忽略拖拽
+            if(e.target.closest('#todo-checkbox-1')) return;
+            
+            isDragging = true;
+            startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+            swipeSurface.classList.remove('swipe-transition');
+        };
+
+        const handleDragMove = (e) => {
+            if (!isDragging) return;
+            const x = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+            currentX = x - startX;
+            
+            if (currentX > 80) currentX = 80;
+            if (currentX < -80) currentX = -80;
+            
+            swipeSurface.style.transform = `translateX(${currentX}px)`;
+        };
+
+        const handleDragEnd = () => {
+            if (!isDragging) return;
+            isDragging = false;
+            swipeSurface.classList.add('swipe-transition');
+            
+            if (currentX > 40) {
+                currentX = 64; 
+            } else if (currentX < -40) {
+                currentX = -64; 
+            } else {
+                currentX = 0; 
+            }
+            swipeSurface.style.transform = `translateX(${currentX}px)`;
+        };
+
+        swipeSurface.addEventListener('touchstart', handleDragStart, {passive: true});
+        swipeSurface.addEventListener('touchmove', handleDragMove, {passive: true});
+        swipeSurface.addEventListener('touchend', handleDragEnd);
+
+        swipeSurface.addEventListener('mousedown', handleDragStart);
+        document.addEventListener('mousemove', handleDragMove);
+        document.addEventListener('mouseup', handleDragEnd);
+
+
+        // ==========================================
+        // 底部虚拟键盘/编辑抽屉 逻辑
+        // ==========================================
+        const btnContentClick = document.getElementById('todo-content-click');
+        const keyboardDrawer = document.getElementById('keyboard-drawer');
+        const keyboardOverlay = document.getElementById('keyboard-overlay');
+        const bottomTabBar = document.getElementById('bottom-tab-bar');
+
+        const openKeyboard = () => {
+            if(currentX !== 0) {
+                currentX = 0;
+                swipeSurface.style.transform = `translateX(0px)`;
+                return; 
+            }
+            keyboardDrawer.style.transform = ''; 
+            keyboardDrawer.style.transition = 'transform 0.3s ease-out';
+            keyboardDrawer.classList.remove('translate-y-full');
+            keyboardOverlay.classList.remove('hidden');
+            setTimeout(() => keyboardOverlay.classList.add('opacity-100'), 10);
+            bottomTabBar.style.transform = 'translateY(100%)';
+        };
+
+        const closeKeyboard = () => {
+            keyboardDrawer.style.transform = ''; 
+            keyboardDrawer.classList.add('translate-y-full');
+            keyboardOverlay.classList.remove('opacity-100');
+            setTimeout(() => keyboardOverlay.classList.add('hidden'), 300);
+            bottomTabBar.style.transform = 'translateY(0)';
+        };
+
+        btnContentClick.addEventListener('click', (e) => {
+            if (Math.abs(currentX) > 10) return; 
+            openKeyboard();
+        });
+        
+        keyboardOverlay.addEventListener('click', closeKeyboard);
+
+        // 键盘抽屉向下拖拽关闭
+        let drawerStartY = 0;
+        let drawerCurrentY = 0;
+        let isDrawerDragging = false;
+
+        const handleDrawerDragStart = (e) => {
+            if (e.target.tagName.toLowerCase() === 'input') return;
+            isDrawerDragging = true;
+            drawerStartY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+            keyboardDrawer.style.transition = 'none'; 
+        };
+
+        const handleDrawerDragMove = (e) => {
+            if (!isDrawerDragging) return;
+            const y = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+            drawerCurrentY = y - drawerStartY;
+            
+            if (drawerCurrentY > 0) {
+                keyboardDrawer.style.transform = `translateY(${drawerCurrentY}px)`;
+            }
+        };
+
+        const handleDrawerDragEnd = () => {
+            if (!isDrawerDragging) return;
+            isDrawerDragging = false;
+            keyboardDrawer.style.transition = 'transform 0.3s ease-out';
+            
+            if (drawerCurrentY > 60) {
+                closeKeyboard();
+            } else {
+                keyboardDrawer.style.transform = 'translateY(0)';
+            }
+            drawerCurrentY = 0;
+        };
+
+        keyboardDrawer.addEventListener('touchstart', handleDrawerDragStart, {passive: true});
+        keyboardDrawer.addEventListener('touchmove', handleDrawerDragMove, {passive: true});
+        keyboardDrawer.addEventListener('touchend', handleDrawerDragEnd);
+
+        keyboardDrawer.addEventListener('mousedown', handleDrawerDragStart);
+        document.addEventListener('mousemove', handleDrawerDragMove);
+        document.addEventListener('mouseup', handleDrawerDragEnd);
+
+
+        // ==========================================
+        // 二级页面: 任务对话页 (Task-based Chat)
+        // ==========================================
+        const pageTaskChat = document.getElementById('page-task-chat');
+        const btnTriggerAiChat = document.getElementById('btn-trigger-ai-chat');
+        const btnBackTaskChat = document.getElementById('btn-back-task-chat');
+
+        btnTriggerAiChat.addEventListener('click', () => {
+            pageTaskChat.classList.remove('translate-x-full');
+            pageTaskChat.classList.add('translate-x-0');
+            currentX = 0;
+            swipeSurface.style.transform = `translateX(0px)`;
+        });
+
+        btnBackTaskChat.addEventListener('click', () => {
+            pageTaskChat.classList.remove('translate-x-0');
+            pageTaskChat.classList.add('translate-x-full');
+        });
+
+    </script>
+</body>
+</html>

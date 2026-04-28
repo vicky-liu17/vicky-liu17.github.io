@@ -712,3 +712,115 @@
 
   .github-content { text-align: center; }
 }
+
+.block-iframe-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 0;
+  width: 100%;
+}
+
+.iframe-container {
+  /* 移除模拟手机外壳的 padding 和黑色背景 */
+  padding: 0; 
+  background-color: transparent;
+  
+  /* 直接给容器设置圆角和阴影 */
+  border-radius: 2.5rem; 
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden; /* 这一步至关重要，它会裁剪掉 iframe 超出的直角 */
+  
+  /* 确保容器尺寸与 iframe 严格一致 */
+  width: 375px; 
+  height: 812px;
+}
+
+.iframe-container iframe {
+  /* 移除 iframe 自身的 border-radius，直接靠外层容器裁剪 */
+  border-radius: 0; 
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.block-iframe-wrapper .caption {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #888;
+  text-align: center;
+}
+
+/* =========================================
+   Lightbox (点击放大图) 样式
+   ========================================= */
+
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85); /* 半透明黑色背景 */
+  backdrop-filter: blur(5px); /* 毛玻璃效果 */
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* 确保层级最高，覆盖导航栏等 */
+  cursor: zoom-out; /* 提示点击可缩小/关闭 */
+  animation: fadeInModal 0.2s ease-out;
+}
+
+.lightbox-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  cursor: default; /* 图片本身不需要 zoom-out 光标 */
+  transform: scale(0.95);
+  animation: scaleUpImg 0.2s ease-out forwards;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 3rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+  color: white;
+}
+
+/* 优化文章内图片的悬浮反馈 */
+.block-image img, 
+.block-image-group img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.block-image img:hover, 
+.block-image-group img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* 简单的弹出动画 */
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUpImg {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

@@ -221,98 +221,146 @@ body.hamburger-active .drawer-nav { display: none; }
 .work-title { font-family: var(--font-serif); font-size: 1.4rem; color: #fff; margin: 0 0 8px 0; }
 .work-desc { font-size: 0.9rem; color: #888; line-height: 1.5; }
 
-/* --- Journey Timeline --- */
-.journey-timeline {
+
+/* =========================================
+   Journey Timeline (Minimalist Vertical Line)
+   ========================================= */
+.vertical-timeline {
   position: relative;
-  display: flex;
-  justify-content: space-between; 
-  /* Large top padding for "breathing room" */
-  padding: 140px 20px 60px 0; 
-  margin-top: 50px; 
-  margin-bottom: 20px;
-}
-
-/* Central Axis */
-.journey-track {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 10px; 
-  height: 2px;
-  background: #333;
-  z-index: 0;
-}
-
-/* Arrow Head */
-.journey-track::after {
-  content: '';
-  position: absolute;
-  right: -5px;
-  top: -4px;
-  width: 0; height: 0; 
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 10px solid #333;
-}
-
-.journey-node {
-  position: relative;
-  z-index: 1;
-  flex: 1; 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 0;
+  padding: 40px 0; 
+  max-width: 800px; /* 稍微增加总体宽度，让文字有更多空间 */
+  margin: 0 auto;
 }
 
-.journey-marker {
-  width: 30px; height: 30px;
-  background: var(--color-bg-paper);
-  border: 2px solid var(--color-accent);
+/* Central Axis Line */
+.v-track {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--color-accent); 
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* 顶部向上的箭头 */
+.v-track::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 12px solid var(--color-accent); /* UPWARD arrow */
+}
+
+/* Individual node container */
+.v-node {
+  display: flex;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  min-height: 90px; /* 节点最小高度，拉开间距 */
+}
+
+/* Horizontal alignment */
+.v-left { justify-content: flex-start; }
+.v-right { justify-content: flex-end; }
+
+/* The Dot on the line */
+.v-marker {
+  position: absolute;
+  left: 50%;
+  top: 5px; 
+  transform: translateX(-50%);
+  width: 22px; 
+  height: 22px;
   border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.9rem; color: var(--color-accent);
-  position: relative; z-index: 2; transition: 0.3s;
+  background-color: #000; 
+  border: 1.5px solid var(--color-accent); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  font-size: 0.85rem; 
+  z-index: 3;
 }
 
-.journey-node:hover .journey-marker {
-  background: var(--color-accent); color: #fff;
-  transform: scale(1.2); box-shadow: 0 0 15px var(--color-accent);
+/* Experience Text Block */
+.v-card {
+  width: 50%; 
+  padding: 0; 
+  box-sizing: border-box; /* 极度关键：保证 padding 往内挤压，而不是撑大容器 */
+  background-color: transparent; 
+  border: none;
+  border-radius: 0;
 }
 
-.journey-line-connector {
-  position: absolute; width: 1px;
-  background: rgba(231, 76, 60, 0.3);
-  height: 80px; 
-  left: 50%; z-index: 0;
+/* 💡 强制大间距：彻底推开文字和中轴线 💡 */
+.v-left .v-card {
+  text-align: right;
+  padding-right: 30px; /* 强行拉开距离 */
+}
+.v-right .v-card {
+  text-align: left;
+  padding-left: 30px; /* 强行拉开距离 */
 }
 
-.journey-card {
-  position: absolute; width: 180px; text-align: center;
-  transition: transform 0.3s;
+/* Hover effect on text */
+.v-node:hover .v-title {
+  color: var(--color-accent);
 }
 
-/* UP NODE positions */
-.node-up .journey-card { bottom: 65px; } 
-.node-up .journey-line-connector { bottom: 15px; top: auto; }
+/* Typography */
+.v-period {
+  display: block;
+  font-size: 0.85rem;
+  color: #888888; 
+  margin-bottom: 4px;
+}
 
-/* DOWN NODE positions */
-.node-down .journey-card { top: 65px; } 
-.node-down .journey-line-connector { top: 15px; bottom: auto; }
+.v-title {
+  font-size: 1.15rem; 
+  color: #ffffff;
+  margin: 0 0 4px 0; 
+  font-weight: 500;
+  line-height: 1.3; 
+  transition: color 0.3s;
+}
 
-.journey-node:hover .journey-card { transform: scale(1.05); }
+.v-place {
+  font-size: 0.95rem; 
+  color: #cccccc;
+  margin-bottom: 4px;
+}
 
-.j-period { font-size: 0.8rem; color: var(--color-accent); font-weight: 600; display: block; margin-bottom: 4px; }
-.j-title { font-size: 1rem; color: #fff; margin: 0 0 4px 0; font-weight: 600; line-height: 1.2; }
-.j-place { font-size: 0.85rem; color: #bbb; margin-bottom: 2px; }
-.j-loc { font-size: 0.75rem; color: #666; font-style: italic; }
+.v-loc {
+  font-size: 0.8rem; 
+  color: #777777; 
+  font-style: italic;
+}
 
+.v-desc {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  line-height: 1.5;
+}
+
+/* Footer */
 .site-footer { text-align: center; color: #555; font-size: 0.85rem; margin-top: 60px; }
 
 
 /* ================= MEDIA QUERIES ================= */
 
 @media (max-width: 1024px) {
-  /* Tablet: 2 columns for Portfolio */
   .works-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -323,41 +371,34 @@ body.hamburger-active .drawer-nav { display: none; }
   .page-wrapper { padding: 0; }
   .site-header { flex-direction: column-reverse; align-items: flex-start; gap: 20px; }
   .profile-photo { width: 120px; height: 120px; }
+  .works-grid { grid-template-columns: 1fr; }
+  
+  /* Timeline Reset for Mobile */
+  .v-track {
+    left: 20px; /* 线条向右缩进一点，留出呼吸感 */
+    transform: none;
+  }
+  
+  .v-track::before {
+    left: 0px;
+    transform: none;
+    margin-left: -5.5px; /* 修正手机端箭头的中心对齐 */
+  }
 
-  /* Mobile: 1 column for Portfolio */
-  .works-grid {
-    grid-template-columns: 1fr;
+  .v-marker {
+    left: 20px;
+    transform: translateX(-50%);
+  }
+
+  .v-left, .v-right {
+    justify-content: flex-end;
   }
   
-  /* Timeline Reset for Mobile (Vertical) */
-  .journey-timeline {
-    flex-direction: column;
-    padding: 0; margin-top: 30px;
-    gap: 30px;
-    border-left: 2px solid #333;
-    margin-left: 15px;
+  /* 手机端间距适配 */
+  .v-card {
+    width: 100%; 
+    text-align: left !important;
+    padding-left: 60px !important; /* 强制保持文字离线条有 60px 的安全距离 */
+    padding-right: 20px !important;
   }
-  
-  .journey-track { display: none; } 
-  
-  .journey-node {
-    flex-direction: row; 
-    align-items: flex-start;
-    padding-left: 20px; text-align: left; width: auto;
-  }
-  
-  .journey-marker {
-    position: absolute; left: -16px; top: 0;
-    width: 32px; height: 32px;
-  }
-  
-  .journey-line-connector { display: none; }
-  
-  .journey-card {
-    position: relative; width: 100%; text-align: left;
-    top: auto !important; bottom: auto !important;
-  }
-  
-  .node-up .journey-card, .node-down .journey-card { margin: 0; }
-  .j-title { font-size: 1.1rem; }
 }

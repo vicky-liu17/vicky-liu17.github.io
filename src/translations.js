@@ -26,19 +26,64 @@ export const translations = {
         sectionWorks: 'Selected Works',
         sectionJourney: 'My Journey',
         portfolio: [
+            {
+                "name": "Follo",
+                "cat": "Web Application / Context-Aware AI Agent",
+                "desc": "Context-aware AI agent that resurrects 'zombie tasks' and proactively manages schedules based on real-time physical states."
+            },
             { name: 'Remnants of Love', cat: 'AI-Native Game', desc: 'Exploring LLM-driven semantic interaction in generative gaming.' },
             { name: 'AI Piano Evaluator', cat: 'HAI & MUSIC TECH', desc: 'Exploring algorithm-driven visual feedback in interactive music education.' },
-            { name: 'GetPlanned', cat: 'Web Application / AI Productivity', desc: 'AI-driven planner transforming natural language into smart, conflict-free daily schedules.' },
             { name: 'Access Our Community', cat: 'Web Platform / HCI', desc: 'A real-time pro bono matching platform connecting lawyers with NGOs.' },
         ],
         journey: [
-            { period: '2016 — 2020', title: 'BEng in Computer Science', place: 'The University of Hong Kong', location: 'Hong Kong' },
-            { period: 'Fall 2018', title: 'Exchange Program', place: 'Nanyang Tech. Univ.', location: 'Singapore' },
-            { period: 'June 2019 — Aug 2019', title: 'Software Dev Intern', place: 'Alibaba Group', location: 'Hangzhou' },
-            { period: 'Sept 2020 — Oct 2021', title: 'Software Engineer', place: 'Alibaba Group (Fliggy)', location: 'Hangzhou' },
-            { period: '2023 — Present', title: 'MSc in Machine Learning', place: 'KTH Royal Institute', location: 'Stockholm' },
-            { period: 'June 2024 — Aug 2024', title: 'AI R&D Intern', place: 'Ericsson', location: 'Stockholm' },
-            { period: 'July 2025 — Dec 2025', title: 'Game Design Intern', place: 'NetEase, Inc.', location: 'Hangzhou' },
+            {
+                "period": "Mar 2026 — Present",
+                "title": "HCI Research Intern",
+                "place": "The Future Laboratory, Tsinghua University",
+                "location": "Beijing"
+            },
+            {
+                "period": "July 2025 — Dec 2025",
+                "title": "Game Design Intern",
+                "place": "NetEase, Inc.",
+                "location": "Hangzhou"
+            },
+            {
+                "period": "June 2024 — Aug 2024",
+                "title": "ML Research Intern",
+                "place": "Ericsson",
+                "location": "Stockholm"
+            },
+            {
+                "period": "2023 — Present",
+                "title": "MSc in Machine Learning",
+                "place": "KTH Royal Institute of Technology",
+                "location": "Stockholm"
+            },
+            {
+                "period": "Sept 2020 — Oct 2021",
+                "title": "Software Engineer",
+                "place": "Alibaba Group (Fliggy)",
+                "location": "Hangzhou"
+            },
+            {
+                "period": "June 2019 — Aug 2019",
+                "title": "Software Dev Intern",
+                "place": "Alibaba Group",
+                "location": "Hangzhou"
+            },
+            {
+                "period": "Fall 2018",
+                "title": "Exchange Program",
+                "place": "Nanyang Technological University",
+                "location": "Singapore"
+            },
+            {
+                "period": "2016 — 2020",
+                "title": "BEng in Computer Science",
+                "place": "The University of Hong Kong",
+                "location": "Hong Kong"
+            }
         ],
         footer: '© 2025 Yujie Liu.',
         detail: { back: 'Back to Index', date: 'Date' },
@@ -68,19 +113,65 @@ export const translations = {
         sectionWorks: '精选作品',
         sectionJourney: '我的历程',
         portfolio: [
+            {
+                "name": "Follo",
+                "cat": "Web Application / Context-Aware AI Agent",
+                "desc": "基于情境感知的 AI 代理，能够实时推演用户状态，主动复活“僵尸任务”并智能调度日程。"
+            },
             { name: '心动碎片', cat: 'AI 原生游戏', desc: '探索大语言模型驱动的语义交互在生成式游戏中的应用。' },
             { name: 'AI 钢琴评估器', cat: '人机交互 & 音乐科技', desc: '探索算法驱动的视觉反馈在互动音乐教育中的应用。' },
-            { name: 'GetPlanned', cat: 'Web 应用 / AI 效率工具', desc: 'AI 驱动的规划工具，将自然语言转化为智能无冲突的日程安排。' },
+
             { name: '法律援助社区平台', cat: 'Web 平台 / 人机交互', desc: '实时公益法律匹配平台，连接律师与非政府组织。' },
         ],
         journey: [
-            { period: '2016 — 2020', title: '计算机科学学士', place: '香港大学', location: '香港' },
-            { period: '2018年秋', title: '交换生项目', place: '南洋理工大学', location: '新加坡' },
-            { period: '2019年6月 — 8月', title: '软件开发实习生', place: '阿里巴巴集团', location: '杭州' },
-            { period: '2020年9月 — 2021年10月', title: '软件工程师', place: '阿里巴巴（飞猪）', location: '杭州' },
-            { period: '2023 — 至今', title: '机器学习硕士', place: 'KTH 皇家理工学院', location: '斯德哥尔摩' },
-            { period: '2024年6月 — 8月', title: 'AI 研发实习生', place: '爱立信', location: '斯德哥尔摩' },
-            { period: '2025年7月 — 12月', title: '游戏设计实习生', place: '网易', location: '杭州' },
+            {
+                "period": "2026年3月 — 至今",
+                "title": "HCI科研实习生",
+                "place": "清华大学未来实验室",
+                "location": "北京"
+            },
+            {
+                "period": "2025年7月 — 12月",
+                "title": "游戏设计实习生",
+                "place": "网易雷火",
+                "location": "杭州"
+            },
+            {
+                "period": "2024年6月 — 8月",
+                "title": "机器学习科研实习生",
+                "place": "爱立信",
+                "location": "斯德哥尔摩"
+            },
+            {
+                "period": "2023 — 至今",
+                "title": "机器学习硕士",
+                "place": "瑞典皇家理工学院 (KTH Royal Institute of Technology)",
+                "location": "斯德哥尔摩"
+            },
+            {
+                "period": "2020年9月 — 2021年10月",
+                "title": "软件工程师",
+                "place": "阿里巴巴集团（飞猪）",
+                "location": "杭州"
+            },
+            {
+                "period": "2019年6月 — 8月",
+                "title": "软件开发实习生",
+                "place": "阿里巴巴集团",
+                "location": "杭州"
+            },
+            {
+                "period": "2018年秋",
+                "title": "交换生项目",
+                "place": "南洋理工大学",
+                "location": "新加坡"
+            },
+            {
+                "period": "2016 — 2020",
+                "title": "计算机科学学士",
+                "place": "香港大学",
+                "location": "香港"
+            }
         ],
         footer: '© 2025 刘宇杰。',
         detail: { back: '返回首页', date: '日期' },
@@ -91,7 +182,7 @@ export const translations = {
         // 图片/视频/链接等媒体字段直接复用英文原数据（ProjectDetail 会自动合并）
         projectsContent: {
             // ── Project 1: 心动碎片 ────────────────────────────────────────────
-            '1': {
+            '2': {
                 title: '心动碎片',
                 category: 'AI 原生游戏 / 技术艺术研究',
                 date: '2025年8月',
@@ -222,7 +313,7 @@ export const translations = {
             },
 
             // ── Project 2: AI 钢琴评估器 ──────────────────────────────────────
-            '2': {
+            '3': {
                 title: 'AI 钢琴评估器',
                 category: '人机交互 / 音乐教育技术',
                 date: '2026年2月',
@@ -352,98 +443,49 @@ AI 钢琴评估器突破了传统音频分析工具的单一性。通过**全栈
                 ],
             },
 
-            // ── Project 3: GetPlanned ──────────────────────────────────────────
-            '3': {
-                title: 'GetPlanned — 智能语义日程规划引擎与 AI 原生效率工具研究',
-                category: 'AI 原生交互设计 / 语义自动化调度系统研究',
-                date: '2026年3月',
-                content: [
-                    { type: 'text', value: '**探索意图驱动界面：通过语义推理与空间交互重新定义任务管理**\n' },
+            // ── Project 3: Follo ──────────────────────────────────────────
+            "1": {
+                "id": 3,
+                "title": "Follo AI — 基于情境感知的伺机性任务调度与干预研究",
+                "category": "人机交互设计 (HCI) / 普适计算 (UbiComp)",
+                "date": "2026年3月",
+                "content": [
                     {
-                        type: 'text',
-                        value: `### 1. 项目背景与痛点
-
-在传统日程软件中，用户常常陷入**低效输入**与**高维护成本**的困境：
-
-* **繁重的输入：** 创建任务需要在复杂的 UI 层级中手动填写标题、分类和精确时间。这种高摩擦流程在计划开始之前就消耗了用户的精力。
-* **调整困难：** 当计划变动（如会议延期）时，用户必须逐一点入每个任务卡片进行修改。缺乏直观的全局调整方式，使软件退化为僵硬的「备忘录」而非灵活的「规划器」。
-
-**GetPlanned** 借助 AI 实现任务输入自动化，并结合高保真物理拖拽交互，实现日常日程安排的 **「无缝调整」**。`,
+                        "type": "text",
+                        "value": "**弥合模糊意图与物理时空：基于多模态情境推演的“僵尸任务”复活机制**\n\n*（注：本项目是我在清华大学未来实验室 参与的HCI课题研究，目标旨在探索普适计算环境下的下一代任务管理范式。）*"
                     },
                     {
-                        type: 'image-link',
-                        src: '/get-planned.png',
-                        link: 'https://get-planned.vercel.app/',
-                        caption: '在 Vercel 上体验在线演示（注：中国大陆地区可能受限）。',
+                        "type": "text",
+                        "value": "### 1. 研究背景与核心痛点\n\n在现有的任务管理与效率工具中，系统往往默认用户是“数字空间的被动思想者”，强制索要清晰、结构化的输入指令。这导致了两个显著的用户痛点：\n\n* **“僵尸任务”的无声积压：** 当任务未在设定时间内完成，或者用户初期只记录了模糊意图（未分配具体时间地点）时，这些任务会逐渐沉底，成为带来认知焦虑的“僵尸任务”。\n* **与物理世界现实脱节：** 传统日历无视用户当下的现实状态与精力摩擦，在不恰当的时机进行生硬打断。这不仅加剧了用户的**打扰感（Perceived Interruption）**与**通知疲劳（Notification Fatigue）**，最终更会导致用户依从性急剧下降，甚至引发对显式记录的抗拒与工具弃用行为（System Abandonment）。"
                     },
                     {
-                        type: 'text',
-                        value: `### 2. 项目概述
-
-GetPlanned 是一款基于 **大语言模型（LLM）** 的AI原生日程工具。本项目通过以下方式重构任务管理的核心链路：
-
-1. **自然语言处理（NLP）：** 进行深度意图解析，将模糊文本转化为结构化数据。
-2. **空间交互：** 允许用户通过高频拖拽操作重新编排日程。
-
-本项目验证了 LLM 在逻辑编排中的潜力，并通过**基于语义的交互系统**解决了交互流畅性和准确性问题。`,
+                        "type": "text",
+                        "value": "### 2. 系统原型与核心理念\n\n为了解决上述痛点，本研究构建了一个基于 **情境感知（Context-Awareness）** 的后台调度原型。系统不再是一个死板的记录载体，而是一个在后台默默运行的高情商“外脑”。\n\n系统围绕用户的物理空间，实时监测用户的现实状态（Physical Context），并以此为依据，在合适的窗口期为用户智能匹配积压的任务，实现自然状态下的“伺机干预（Opportunistic Intervention）”。"
+                    },
+                    { "type": "image", "src": "/follo.png", "caption": "Follo的伺机性任务介入流程：从模糊意图到物理情境触发" },
+                    {
+                        "type": "text",
+                        "value": "### 3. 核心机制设计：从模糊输入到情境推演\n\n**A. 模糊意图的时空补全与备选卡片**\n* 当用户输入模糊指令（如“有空去取个快递”）时，AI 会根据用户平时的习惯、常驻地、当前 GPS 信息等，自动推断并完善出具体的执行时间和地点。\n* 系统会生成非强制性的“备选卡片”。如果用户当下不愿意设定明确的时间也可以，系统会将其暂时收纳入库，避免带来立即规划的压迫感。\n\n**B. 后台多模态情境监测（HAR & LBS）**\n* 结合多模态传感器融合算法（如 WiFi、GPS、气压计、IMU 等） ，系统在后台持续计算用户的物理位置、移动意图（Human Activity Recognition, HAR） 以及健康/精力状态。"
                     },
                     {
-                        type: 'text',
-                        value: `### 3. 核心技术架构
-
-我设计了一套 **「AI 自动化 + 手动空间微调」** 的双循环架构：
-
-* **服务端校准：** 针对 LLM 的时间运算幻觉问题，我使用 **Next.js 后端运行时**计算物理时间轴，将精确锚点输入 AI，确保日程无冲突。
-* **多维空间交互逻辑：**
-    * **拖拽重排：** 支持跨时间段（早/午/晚）和跨日期的物理拖拽，后端自动重新计算排序索引，实现秒级重组。
-    * **拖拽复制：** 长按触发逻辑，允许用户将任务「抛送」至次日。AI 识别意图后，保留属性并更新时间戳。
-* **多动作批处理：** 支持在单条指令中执行复杂的「创建、删除、更新」混合操作，使用结构化 **JSON Schema** 确保输出的确定性。`,
+                        "type": "text",
+                        "value": "### 4. 关键交互突破：“僵尸任务”的伺机复活\n\n这是本研究最核心的创新点：化被动提醒为**情境驱动的主动分发**。\n\n* **寻找最佳任务窗口：** 系统在后台实时拉取用户周围的 LBS（基于位置的服务）并结合精力测算。\n* **动态匹配与询问：** 当监测到绝佳的情境触发点（例如：新一天的早晨、上一个日程刚刚结束时的碎片时间、或者检测到用户恰好途经某地），AI 会依据当前的 Context，从“僵尸任务”池中精准抽取最匹配的一项。\n* **轻量级确认交互：** 弹出询问（例如：“你现在刚好在商场附近且有 30 分钟空闲，要顺便把之前记录的咖啡豆买了吗？”），用户只需决定是否接受。这一机制极大地降低了用户在海量列表中做决策的认知负荷。"
                     },
                     {
-                        type: 'github-card',
-                        repoName: 'vicky-liu17/Get-Planned',
-                        desc: '一套使用「语义推理 + 后端校准」混合引擎的 AI 原生日程生态系统，基于 Next.js、TypeScript 和 LLM 集成构建。',
-                        link: 'https://github.com/vicky-liu17/Get-Planned',
+
+                        "type": "iframe",
+                        "src": "/follo-demo.html",
+                        "title": "Follo App Prototype",
+                        "width": "375px",
+                        "height": "812px",
+                        "caption": "Follo Early Interaction Prototype"
+
                     },
                     {
-                        type: 'text',
-                        value: `### 4. 技术挑战与 HCI 深度优化
-
-为实现商业级触感体验，我攻克了关键的前端交互难题：
-
-**A. 长按与微移的死区算法**
-> **问题：** 长按时，人手不可避免地产生像素级微移，导致传统监听器过早取消。\\
-> **解决方案：** 我引入**死区算法**，使用 \`useRef\` 锁定初始坐标，通过勾股定理计算位移，仅当移动超过 10px 时才判定为取消长按。这使交互与人体生理特征相吻合。
-
-**B. 高频事件降噪**
-* 对海量 \`PointerMove\` 事件应用 **防抖（Debounce）** 和 **节流（Throttle）** 技术。
-* 即使在复杂日程布局下，也确保稳定的 **60fps 渲染性能**。`,
-                    },
-                    {
-                        type: 'text',
-                        value: `### 5. 核心机制：基于语义的交互（以 HAI 为中心）
-
-为提升 **人机交互（HAI）** 的可信度，我实现了以下关键策略：
-
-* **确定性转换：** AI 从模糊描述（如「下周一晚上」）锚定日期并估算时长，推理过程通过**打字机组件**逐字呈现，建立算法透明度。
-* **多模态反馈闭环：**
-    * **语义视觉增强：** 包含 40+ 图标的图标库与动态颜色系统（如工作-蓝、健康-绿）。例如，AI 自动将「洗衣服」映射为衬衫图标，降低认知负担。
-* **智能时长与锁定机制：** 使用 \`isEstimatedDuration\` 标志位。AI 基于常识提议时长（如健身 60 分钟），用户通过双击修正保留最终决策权（**「AI 提议，人类决定」**）。`,
-                    },
-                    { type: 'image', src: '/planning-demo1.png', caption: 'GetPlanned 极简初始界面，展示简洁的多日历视图与分类筛选器（工作、学习、健康等），随时等待自然语言输入。' },
-                    { type: 'image', src: '/planning-demo2.png', caption: '自然语言处理（NLP）输入演示：用户在语义命令栏中直接输入复杂多任务指令（「开会……然后吃晚饭」）。' },
-                    { type: 'image', src: '/planning-demo3.png', caption: 'AI 调度结果：系统自动解析意图，为周三（3月4日）计算时间段，并提供透明的推理文本说明无冲突的安排逻辑。' },
-                    {
-                        type: 'text',
-                        value: `### 6. 技术总结与未来展望
-
-GetPlanned 通过将精致的 HCI 与后端逻辑相结合，将非确定性的生成能力驯化为严谨的效率工具。
-
-**未来研究方向：**
-* **多用户协作：** 探索 AI 代理如何在不同用户空间之间进行语义协商，自动对齐团队会议时间。
-* **全生命周期上下文记忆：** 集成**向量数据库（Vector DB）**，基于历史执行习惯（实际时长与估算时长的差异）优化时长估算模型。`,
-                    },
-                ],
+                        "type": "text",
+                        "value": "### 5. 研究意义与未来展望\n\n本研究探讨了如何让 AI 理解真实世界的物理信号并作为“调度中介”，提出了一种兼顾 **算法主动性（Proactivity）** 与 **用户掌控感（Agency）** 的混合主导设计。\n\n通过将基于物理空间的情境计算与大语言模型结合，我们将数字任务重新编织进用户的物理生活节律中。未来，这项研究将进一步拓展至长短期的情绪与习惯记忆框架，旨在打造能真正抹平现实摩擦的伴随式数字分身。"
+                    }
+                ]
             },
 
 

@@ -5,7 +5,7 @@ export const projectsData = [
   // Project 1: Remnants of Love (Original Data Preserved)
   // =========================================================================
   {
-    "id": 1,
+    "id": 2,
     "title": "Remnants of Love",
     "category": "AI-Native Game / Technical Art Research",
     "date": "August 2025",
@@ -118,7 +118,7 @@ export const projectsData = [
   // Project 2: Nebula Analytics (Original Data Preserved)
   // =========================================================================
   {
-    "id": 2,
+    "id": 3,
     "title": "AI Piano Evaluator",
     "category": "Human-AI Interaction / Music Education Technology",
     "date": "February 2026",
@@ -186,68 +186,64 @@ export const projectsData = [
   },
 
   {
-    id: 3,
-    title: "GetPlanned — Intelligent Semantic Scheduling Engine & AI-Native Productivity Tool Research",
-    category: "AI-Native Interaction Design / Semantic Automated Scheduling System Research",
-    date: "March 2026",
-    content: [
+
+    "id": 1,
+    "title": "Follo AI — Opportunistic Task Scheduling and Intervention Based on Context Awareness",
+    "category": "Human-Computer Interaction (HCI) / Ubiquitous Computing (UbiComp)",
+    "date": "March 2026",
+    "content": [
       {
-        type: "text",
-        value: "**Exploring Intent-Driven Interfaces: Redefining Task Management through Semantic Reasoning and Spatial Interaction**\n"
+        "type": "text",
+        "value": "**Bridging Ambiguous Intent and Physical Spatiotemporal Context: A Multi-Modal Context Inference Mechanism for Reviving “Zombie Tasks”**\n\n*(Note: This project was conducted as part of an HCI research initiative at Tsinghua University Future Laboratory, aiming to explore next-generation task management paradigms in ubiquitous computing environments.)*"
       },
       {
-        type: "text",
-        value: "### 1. Project Background and Pain Points\n\nIn traditional scheduling software, users often fall into the trap of **low input efficiency** and **high maintenance costs**:\n\n* **Heavy Input:** Creating tasks requires manual entry of titles, categories, and precise times within complex UI hierarchies. This high-friction process consumes user effort before the plan even begins.\n* **Delayed Adjustments:** When plans change (e.g., a meeting is postponed), users must click into each task card to modify it. The lack of intuitive global adjustment methods causes software to degenerate into a rigid 'memo' rather than a flexible 'planner'.\n\n**GetPlanned** leverages AI to automate task entry and combines it with high-fidelity physical drag-and-drop interaction, achieving **'seamless adjustments'** in daily scheduling."
+        "type": "text",
+        "value": "### 1. Research Background and Core Challenges\n\nIn existing task management and productivity tools, systems often assume users to be “passive thinkers in digital space,” requiring clear and structured input commands. This leads to two major user pain points:\n\n* **Silent accumulation of “zombie tasks”:** When tasks are not completed within a scheduled time, or when users initially record only vague intentions (without specifying time or location), these tasks gradually sink and accumulate, becoming “zombie tasks” that induce cognitive anxiety.\n* **Disconnection from real-world context:** Traditional calendars ignore users’ real-time physical states and energy levels, interrupting them at inappropriate moments. This increases **perceived interruption** and **notification fatigue**, ultimately causing a sharp decline in user compliance, and even leading to resistance toward explicit task recording and eventual system abandonment."
       },
       {
-        type: "image-link",
-        src: `${process.env.PUBLIC_URL}/get-planned.png`,
-        link: "https://get-planned.vercel.app/",
-        caption: "Explore the Live Demo on Vercel (Note: Access may be restricted in Mainland China)."
+        "type": "text",
+        "value": "### 2. System Prototype and Core Concept\n\nTo address these challenges, this research proposes a backend scheduling prototype based on **context-awareness**. The system is no longer a rigid recording tool, but rather a high-empathy “external brain” operating quietly in the background.\n\nCentered around the user’s physical environment, the system continuously monitors real-world states (**physical context**) and intelligently matches pending tasks at appropriate moments, enabling **opportunistic intervention** in a natural and non-intrusive manner."
       },
       {
-        type: "text",
-        value: "### 2. Project Overview\n\nGetPlanned is an AI-native scheduling tool built on **Large Language Models (LLMs)**. The project reconstructs the core chain of task management by:\n\n1.  **Natural Language Processing (NLP):** Performing deep intent parsing to transform vague text into structured data.\n2.  **Spatial Interaction:** Allowing users to reorganize schedules via high-frequency drag-and-drop actions.\n\nThis project validates the potential of LLMs in logical orchestration and solves interaction smoothness and accuracy issues through a **Semantic-Based Interaction System**."
+        "type": "image",
+        "src": "/follo.png",
+        "caption": "Follo’s opportunistic task intervention pipeline: from vague intent to context-triggered activation"
       },
       {
-        type: "text",
-        value: "### 3. Core Technical Architecture\n\nI designed a dual-loop architecture of **'AI Automation + Manual Spatial Fine-tuning'**:\n\n* **Server-side Calibration:** To address LLMs’ time arithmetic hallucinations, I use the **Next.js backend runtime** to compute physical timelines, feeding precise anchors to the AI to ensure conflict-free schedules.\n* **Multidimensional Spatial Interaction Logic:**\n    * **Drag-to-Reschedule:** Supports physical drag across time buckets (Morning/Afternoon/Evening) and dates. The backend automatically recalculates sorting indices for second-level reorganization.\n    * **Drag-to-Duplicate:** A long-press triggered logic allowing users to 'throw' a task to the next day. The AI recognizes the intent, preserving attributes while updating the timestamp.\n* **Multi-Action Batching:** Supports complex 'Create, Delete, and Update' operations in a single command using a structured **JSON Schema** for deterministic output."
+        "type": "text",
+        "value": "### 3. Core Mechanism Design: From Ambiguous Input to Contextual Inference\n\n**A. Spatiotemporal Completion of Vague Intent and Candidate Task Cards**\n* When users input vague instructions (e.g., “pick up a package when I have time”), the AI automatically infers and completes specific execution time and location based on user habits, frequent locations, and current GPS data.\n* The system generates non-mandatory “candidate cards.” If users are unwilling to schedule immediately, tasks can be softly stored without introducing planning pressure.\n\n**B. Background Multi-Modal Context Monitoring (HAR & LBS)**\n* Through multi-modal sensor fusion (e.g., WiFi, GPS, barometer, IMU), the system continuously estimates the user’s physical location, movement intent (**Human Activity Recognition, HAR**), and health/energy state in the background."
       },
       {
-        type: "github-card",
-        repoName: "vicky-liu17/Get-Planned",
-        desc: "An AI-native scheduling ecosystem using a 'Semantic Reasoning + Backend Calibration' hybrid engine, built with Next.js, TypeScript, and LLM integration.",
-        link: "https://github.com/vicky-liu17/Get-Planned"
+        "type": "text",
+        "value": "### 4. Key Interaction Innovation: Opportunistic Revival of “Zombie Tasks”\n\nThis is the central innovation of the research: transforming passive reminders into **context-driven proactive delivery**.\n\n* **Identifying optimal task windows:** The system continuously retrieves nearby LBS (Location-Based Services) data and combines it with energy estimation.\n* **Dynamic matching and prompting:** When an ideal contextual trigger is detected (e.g., the start of a new day, a time gap after a scheduled event, or passing by a relevant location), the AI selects the most suitable task from the “zombie task” pool based on the current context.\n* **Lightweight confirmation interaction:** A prompt is presented (e.g., “You’re near the mall and have 30 minutes free—would you like to pick up the coffee beans you noted earlier?”). Users only need to decide whether to accept, significantly reducing cognitive load compared to navigating long task lists."
       },
       {
-        type: "text",
-        value: "### 4. Technical Challenges and HCI Deep Optimization\n\nTo achieve a commercial-grade tactile experience, I addressed key frontend interaction challenges:\n\n**A. Deadzone Algorithm for Long Press vs. Micro-Movement**\n> **Problem:** Human hands inevitably produce pixel-level micro-movements during long presses, causing traditional listeners to cancel prematurely.\n> **Solution:** I introduced a **Deadzone algorithm** using `useRef` to lock initial coordinates. By calculating displacement via the Pythagorean theorem, the long press is only invalidated if movement exceeds 10px. This aligns the interaction with human physiology.\n\n**B. High-Frequency Event Noise Reduction**\n* Applied **Debounce** and **Throttle** techniques to handle massive `PointerMove` events.\n* Ensured consistent **60fps rendering performance** even under complex schedule layouts."
-      },
-      {
-        type: "text",
-        value: "### 5. Core Mechanism: Semantic-Based Interaction (HAI-Centered)\n\nTo enhance the trustworthiness of **Human-AI Interaction (HAI)**, I implemented several key strategies:\n\n* **Deterministic Transformation:** AI anchors dates and estimates durations from vague descriptions (e.g., 'next Monday evening'). Reasoning is displayed via a **Typewriter Component** to establish algorithmic transparency.\n* **Multimodal Feedback Loop:**\n    * **Semantic Visual Enhancement:** A library of 40+ icons and a dynamic color system (e.g., Work-Blue, Health-Green). AI maps 'Laundry' to a `Shirt` icon automatically, reducing cognitive load.\n* **Intelligent Duration & Lock Mechanism:** Uses an `isEstimatedDuration` flag. AI proposes durations based on common sense (e.g., Gym 60min), while users maintain final authority via double-click corrections (**'AI Proposes, Human Decides'**)."
+
+        "type": "iframe",
+        "src": "/follo-demo.html",
+        "title": "Follo App Prototype",
+        "width": "375px",
+        "height": "812px",
+        "caption": "Follo Early Interaction Prototype"
+
       },
 
       {
-        "type": "image",
-        "src": `${process.env.PUBLIC_URL}/planning-demo1.png`,
-        "caption": "The minimalist initial interface of GetPlanned, showcasing a clean multi-day calendar layout with categorical filters (Work, Study, Health, etc.) ready for natural language input."
+
+        "type": "iframe",
+        "src": "/follo-demo2.html",
+        "title": "Follo App Prototype",
+        "width": "375px",
+        "height": "812px",
+        "caption": "Follo Early Interaction Prototype"
+
       },
       {
-        "type": "image",
-        "src": `${process.env.PUBLIC_URL}/planning-demo2.png`,
-        "caption": "Demonstrating the Natural Language Processing (NLP) input: a user enters a complex multi-task command ('have a meeting... then have dinner') directly into the semantic command bar."
-      },
-      {
-        "type": "image",
-        "src": `${process.env.PUBLIC_URL}/planning-demo3.png`,
-        "caption": "The AI-driven scheduling result: the system automatically parses the intent, calculates time slots for Wednesday (Mar 4), and provides a transparent reasoning text to explain the conflict-free arrangement."
-      },
-      {
-        type: "text",
-        value: "### 6. Technical Summary and Future Outlook\n\nGetPlanned tames non-deterministic generative capabilities into a rigorous productivity tool by combining polished HCI with backend logic.\n\n**Future Research Directions:**\n* **Multi-User Collaboration:** Exploring how AI agents can semantically negotiate across different user spaces to automatically align team meetings.\n* **Full Lifecycle Context Memory:** Integrating a **Vector Database (Vector DB)** to optimize time estimation models based on historical execution habits (actual vs. estimated duration)."
+        "type": "text",
+        "value": "### 5. Research Significance and Future Directions\n\nThis research explores how AI can interpret real-world physical signals as a scheduling intermediary, proposing a hybrid paradigm that balances **algorithmic proactivity** and **user agency**.\n\nBy integrating context-aware computing with large language models, digital tasks are re-embedded into the rhythm of users’ physical lives. Future work will extend toward long- and short-term memory of emotions and habits, aiming to build a truly frictionless, companion-like digital counterpart."
       }
     ]
+
   },
   {
     "id": 4,

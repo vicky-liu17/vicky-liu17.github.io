@@ -1,5 +1,5 @@
 // src/pages/ProjectDetail.js
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { projectsData } from './ProjectsData';
@@ -13,6 +13,9 @@ function ProjectDetail() {
   const { id } = useParams();
   const { lang } = useLang();
   const t = translations[lang];
+
+  // 新增一个 state，用来存储当前需要全屏显示的图片 src
+  const [lightboxImg, setLightboxImg] = useState(null);
 
   // Find the base project (always from projectsData — source of truth for media)
   const baseProject = projectsData.find(p => p.id === parseInt(id));
@@ -35,11 +38,11 @@ function ProjectDetail() {
   const zhProject = t.projectsContent?.[String(baseProject.id)];
   const project = {
     ...baseProject,
-    title:    zhProject?.title    ?? baseProject.title,
+    title: zhProject?.title ?? baseProject.title,
     category: zhProject?.category ?? baseProject.category,
-    date:     zhProject?.date     ?? baseProject.date,
+    date: zhProject?.date ?? baseProject.date,
     // Use translated content when available, else fall back to English
-    content:  (lang === 'zh' && zhProject?.content) ? zhProject.content : baseProject.content,
+    content: (lang === 'zh' && zhProject?.content) ? zhProject.content : baseProject.content,
   };
 
   // ── Block renderers ────────────────────────────────────────────────────────
@@ -55,7 +58,12 @@ function ProjectDetail() {
       case 'image':
         return (
           <div key={index} className="block-image">
-            <img src={block.src} alt={block.caption || 'Project visual'} />
+            <img 
+              src={block.src} 
+              alt={block.caption || 'Project visual'} 
+              onClick={() => setLightboxImg(block.src)}
+              style={{ cursor: 'zoom-in' }}
+            />
             {block.caption && <span className="caption">{block.caption}</span>}
           </div>
         );
@@ -65,7 +73,13 @@ function ProjectDetail() {
           <div key={index} className="block-image-group">
             <div className="image-group-row">
               {block.images.map((imgSrc, i) => (
-                <img key={i} src={imgSrc} alt={`Group visual ${i}`} />
+                <img 
+                  key={i} 
+                  src={imgSrc} 
+                  alt={`Group visual ${i}`} 
+                  onClick={() => setLightboxImg(imgSrc)}
+                  style={{ cursor: 'zoom-in' }}
+                />
               ))}
             </div>
             {block.caption && <span className="caption">{block.caption}</span>}
@@ -141,6 +155,25 @@ function ProjectDetail() {
           </div>
         );
 
+      case 'iframe':
+        return (
+          <div key={index} className="block-iframe-wrapper">
+            <div className="iframe-container">
+              <iframe
+                src={block.src}
+                title={block.title || "Interactive Prototype"}
+                frameBorder="0"
+                sandbox="allow-scripts allow-same-origin"
+                style={{
+                  width: block.width || '390px',
+                  height: block.height || '830px'
+                }}
+              ></iframe>
+            </div>
+            {block.caption && <span className="caption">{block.caption}</span>}
+          </div>
+        );
+
       case 'youtube':
         return (
           <div key={index} className="block-video-wrapper">
@@ -192,6 +225,24 @@ function ProjectDetail() {
         </footer>
 
       </div>
+
+      {/* 灯箱 (Lightbox) 遮罩层 */}
+      {lightboxImg && (
+        <div 
+          className="lightbox-overlay" 
+          onClick={() => setLightboxImg(null)}
+        >
+          <button className="lightbox-close" onClick={() => setLightboxImg(null)}>
+            &times;
+          </button>
+          <img 
+            src={lightboxImg} 
+            alt="Expanded view" 
+            className="lightbox-image" 
+            onClick={(e) => e.stopPropagation()} 
+          />
+        </div>
+      )}
     </div>
   );
 }
