@@ -217,27 +217,27 @@ export const projectsData = [
         "type": "text",
         "value": "### 4. Key Interaction Innovation: Opportunistic Revival of “Zombie Tasks”\n\nThis is the central innovation of the research: transforming passive reminders into **context-driven proactive delivery**.\n\n* **Identifying optimal task windows:** The system continuously retrieves nearby LBS (Location-Based Services) data and combines it with energy estimation.\n* **Dynamic matching and prompting:** When an ideal contextual trigger is detected (e.g., the start of a new day, a time gap after a scheduled event, or passing by a relevant location), the AI selects the most suitable task from the “zombie task” pool based on the current context.\n* **Lightweight confirmation interaction:** A prompt is presented (e.g., “You’re near the mall and have 30 minutes free—would you like to pick up the coffee beans you noted earlier?”). Users only need to decide whether to accept, significantly reducing cognitive load compared to navigating long task lists."
       },
-      {
+      // {
 
-        "type": "iframe",
-        "src": "/follo-demo.html",
-        "title": "Follo App Prototype",
-        "width": "375px",
-        "height": "812px",
-        "caption": "Follo Early Interaction Prototype"
+      //   "type": "iframe",
+      //   "src": "/follo-demo.html",
+      //   "title": "Follo App Prototype",
+      //   "width": "375px",
+      //   "height": "812px",
+      //   "caption": "Follo Early Interaction Prototype"
 
-      },
+      // },
 
-      {
+      // {
 
-        "type": "iframe",
-        "src": "/follo-demo2.html",
-        "title": "Follo App Prototype",
-        "width": "375px",
-        "height": "812px",
-        "caption": "Follo Early Interaction Prototype"
+      //   "type": "iframe",
+      //   "src": "/follo-demo2.html",
+      //   "title": "Follo App Prototype",
+      //   "width": "375px",
+      //   "height": "812px",
+      //   "caption": "Follo Early Interaction Prototype"
 
-      },
+      // },
       {
         "type": "text",
         "value": "### 5. Research Significance and Future Directions\n\nThis research explores how AI can interpret real-world physical signals as a scheduling intermediary, proposing a hybrid paradigm that balances **algorithmic proactivity** and **user agency**.\n\nBy integrating context-aware computing with large language models, digital tasks are re-embedded into the rhythm of users’ physical lives. Future work will extend toward long- and short-term memory of emotions and habits, aiming to build a truly frictionless, companion-like digital counterpart."
