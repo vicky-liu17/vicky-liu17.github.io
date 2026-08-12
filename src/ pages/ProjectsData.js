@@ -2,7 +2,49 @@
 
 export const projectsData = [
   // =========================================================================
-  // Project 1: Remnants of Love (Original Data Preserved)
+  // Project 4: Access Our Community (AOC)
+  // =========================================================================
+  {
+    "id": 1,
+    "title": "Access Our Community (AOC)",
+    "category": "Social Impact Tech / HCI & Web Engineering",
+    "date": "March 2019",
+    "content": [
+      {
+        "type": "text",
+        "value": "**Digitalizing Justice: A Real-Time Pro Bono Matching Platform**"
+      },
+      {
+        "type": "text",
+        "value": "### 1. Project Overview\n\n**Access Our Community (AOC)** is a web-based platform designed to revolutionize how legal professionals connect with pro bono opportunities. It serves as an evolution away from manual, email-based communication, aiming to decrease administrative overhead and increase access to justice for vulnerable communities.\n\n* **The Problem:** The traditional pro bono workflow is plagued by \"Email Spaghetti\"—long, non-real-time email chains that lead to missed opportunities and administrative bottlenecks for lawyers and NGOs alike.\n* **The Ecosystem:** The platform connects three key stakeholders: **NGOs** (Service Providers), **Lawyers** (Volunteers), and **Coordinators** (Admins), creating a unified portal for collaboration.\n* **Global Achievement:** This project participated in the **Global Legal Hackathon 2019**, successfully advancing as a **Global Finalist**, ranking among the top 12 teams worldwide."
+      },
+      {
+        "type": "youtube",
+        "videoId": "c768LYh2Xz8",
+        "caption": "Project Introduction & User Journey: This video illustrates the \"Lucy, Justin, and Penny\" persona narrative. Note: Access to YouTube may be restricted in Mainland China."
+      },
+      {
+        "type": "text",
+        "value": "### 2. Core Interaction: The \"Three-Sided\" Market\n\nThe system architecture replaces linear communication with a **Centralized Hub Interaction Model**. The UX is designed around three distinct user journeys that interact seamlessly.\n\n**2.1 The Discovery Loop (For Lawyers)**\nLawyers (like the persona \"Lucy\") no longer need to parse through batch emails. The platform offers a **Real-Time Searchable Database**.\n\n* **Smart Filtering:** Lawyers can filter cases based on \"Interest,\" \"Skills,\" and \"Availability\".\n* **Instant Application:** The system reduces the cognitive load of finding work. A lawyer finds a case, applies, and the status updates instantly, preventing the frustration of applying for already-filled cases.\n\n**2.2 The Management Loop (For NGOs)**\nNGOs (like the persona \"Justin\") act as the \"Quest Givers.\"\n\n* **Screen & Upload:** NGOs screen legal needs and upload them as structured data entries rather than unstructured text in emails.\n* **Network Broadcasting:** Opportunities are shared instantly with their specific network of pro bono lawyers, increasing the \"Capacity\" of these organizations to do high-impact work.\n\n**2.3 The Oversight Loop (For Coordinators)**\nCoordinators (like \"Penny\") manage the firm's resources.\n\n* **Administrative Oversight:** They have a dashboard to approve matches, ensuring no conflict of interest before a lawyer takes a case."
+      },
+      {
+        type: "image",
+        src: `${process.env.PUBLIC_URL}/structure.png`,
+        caption: "The conceptual framework of the AOC platform, illustrating the transformation from systemic friction to data-driven social impact."
+      },
+      {
+        "type": "text",
+        "value": "### 3. System Architecture: Solving \"Systemic Friction\"\n\n**The Challenge: Latency & Information Asymmetry**\nPrior to AOC, the workflow was asynchronous. NGOs sent emails → Coordinators reviewed → Forwarded to Lawyers → Lawyers replied. This latency meant clients in need often waited too long.\n\n**3.1 Solution: End-to-End Matching System**\nWe implemented a **Single Portal Architecture**. By centralizing the data:\n\n* **Time Efficiency:** Pro bono lawyers save precious time by eliminating the need to manage email threads.\n* **Timely Access:** The community benefits from faster access to justice because the \"matching\" happens in real-time.\n\n**3.2 Solution: Data-Driven Impact (Analytics)**\nOne of the key technical features is the **Reporting Module**. The system automatically tracks hours and engagement. Users can generate reports to demonstrate their contributions to the community, turning abstract \"goodwill\" into quantifiable metrics."
+      },
+      {
+        "type": "text",
+        "value": "### 4. Industry Recognition & Testimonials\n\nThe platform has been validated by high-profile adoption and feedback from government officials and international law firms.\n\n> \"We see much potential and merit in the adoption of technology solutions such as the AOC platform in the provision of pro bono community legal services. By effectively streamlining the process of matching and linking the pro bono lawyers with the service users, the AOC platform will not only enhance public access to legal advice services, but also bring convenience to participating lawyers and service providers.\"\n> — **Nicholas Chan**, Assistant Director of Administration at Chief Secretary for Administration's Office, Government of Hong Kong\n\n> \"As well as coordinating pro bono opportunities...I have a full workload of legal work and other corporate social responsibility initiatives to handle. So we're interested in working with our existing pro bono partners in trialling technology solutions like the AOC platform that can increase efficiency and streamline the process for connecting our lawyers with pro bono opportunities.\"\n> — **Emile McPhee**, Senior Associate and Chair of CCP Committee for pro bono and CSR activities at McCullough Robertson, Brisbane, Australia\n\n> \"Ashurst, like most law firms, do not have a pro bono team based in Asia. For us, our team is based in London and Sydney. This presents capacity, resourcing and time zone issues. We see the AOC platform as helping to fill those needs. AOC will be a much-needed addition to the pro bono environment in Asia.\"\n> — **Sarah Morton-Ramwell**, Partner and Global Head of Pro Bono Practice and Corporate Responsibility Programme at Ashurst, Sydney, Australia\n\n> \"We're proud that Access Our Community is led by one of our own pro bono committee members who has a track record for growing the network of in-house lawyers engaged in pro bono work. AOC will provide a much-needed platform for enabling lawyers to get easily connected and involved with pro bono opportunities.\"\n> — **Lin Shi**, President of Association of Corporate Counsel, Hong Kong\n\n> \"PathFinders is excited about the prospect of having an NGO-to-law firm matching platform.\"\n> — **Celine Dermine**, Access to Justice Programme Manager, PathFinders, Hong Kong"
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Project 2: Remnants of Love
   // =========================================================================
   {
     "id": 2,
@@ -41,7 +83,6 @@ export const projectsData = [
         ],
         caption: "As demonstrated, the heroine responds instantly to specific player actions. This triggers a dual-layer feedback system: a context-aware reaction generated by the LLM, and a quantitative update to the Affinity Value based on the semantic scoring of the interaction."
       },
-
       {
         "type": "text",
         "value": "**2.2 Outer Loop: 3D Map Exploration & Narrative Supplement**\n\n* **Exploration Mechanism:** Players control a 3D avatar of the protagonist (generated by AI and rigged with skeletons) to freely navigate the Victorian-styled map.\n* **Resource & Information Collection:** Players explore locations like cafes and fortune-telling shops to collect chests (containing gold, roses, etc.) and converse with NPCs. This allows them to gather key clues regarding the heroines' backgrounds, preferences, and hidden storylines to assist in the inner loop strategy."
@@ -115,7 +156,7 @@ export const projectsData = [
   },
 
   // =========================================================================
-  // Project 2: Nebula Analytics (Original Data Preserved)
+  // Project 3: AI Piano Evaluator
   // =========================================================================
   {
     "id": 3,
@@ -185,9 +226,11 @@ export const projectsData = [
     ]
   },
 
+  // =========================================================================
+  // Project 1: Follo
+  // =========================================================================
   {
-
-    "id": 1,
+    "id": 4,
     "title": "Follo AI — Opportunistic Task Scheduling and Intervention Based on Context Awareness",
     "category": "Human-Computer Interaction (HCI) / Ubiquitous Computing (UbiComp)",
     "date": "March 2026",
@@ -196,6 +239,7 @@ export const projectsData = [
         "type": "text",
         "value": "**Bridging Ambiguous Intent and Physical Spatiotemporal Context: A Multi-Modal Context Inference Mechanism for Reviving “Zombie Tasks”**\n\n*(Note: This project was conducted as part of an HCI research initiative at Tsinghua University Future Laboratory, aiming to explore next-generation task management paradigms in ubiquitous computing environments.)*"
       },
+
       {
         "type": "text",
         "value": "### 1. Research Background and Core Challenges\n\nIn existing task management and productivity tools, systems often assume users to be “passive thinkers in digital space,” requiring clear and structured input commands. This leads to two major user pain points:\n\n* **Silent accumulation of “zombie tasks”:** When tasks are not completed within a scheduled time, or when users initially record only vague intentions (without specifying time or location), these tasks gradually sink and accumulate, becoming “zombie tasks” that induce cognitive anxiety.\n* **Disconnection from real-world context:** Traditional calendars ignore users’ real-time physical states and energy levels, interrupting them at inappropriate moments. This increases **perceived interruption** and **notification fatigue**, ultimately causing a sharp decline in user compliance, and even leading to resistance toward explicit task recording and eventual system abandonment."
@@ -217,71 +261,67 @@ export const projectsData = [
         "type": "text",
         "value": "### 4. Key Interaction Innovation: Opportunistic Revival of “Zombie Tasks”\n\nThis is the central innovation of the research: transforming passive reminders into **context-driven proactive delivery**.\n\n* **Identifying optimal task windows:** The system continuously retrieves nearby LBS (Location-Based Services) data and combines it with energy estimation.\n* **Dynamic matching and prompting:** When an ideal contextual trigger is detected (e.g., the start of a new day, a time gap after a scheduled event, or passing by a relevant location), the AI selects the most suitable task from the “zombie task” pool based on the current context.\n* **Lightweight confirmation interaction:** A prompt is presented (e.g., “You’re near the mall and have 30 minutes free—would you like to pick up the coffee beans you noted earlier?”). Users only need to decide whether to accept, significantly reducing cognitive load compared to navigating long task lists."
       },
-      // {
-
-      //   "type": "iframe",
-      //   "src": "/follo-demo.html",
-      //   "title": "Follo App Prototype",
-      //   "width": "375px",
-      //   "height": "812px",
-      //   "caption": "Follo Early Interaction Prototype"
-
-      // },
-
-      // {
-
-      //   "type": "iframe",
-      //   "src": "/follo-demo2.html",
-      //   "title": "Follo App Prototype",
-      //   "width": "375px",
-      //   "height": "812px",
-      //   "caption": "Follo Early Interaction Prototype"
-
-      // },
       {
         "type": "text",
         "value": "### 5. Research Significance and Future Directions\n\nThis research explores how AI can interpret real-world physical signals as a scheduling intermediary, proposing a hybrid paradigm that balances **algorithmic proactivity** and **user agency**.\n\nBy integrating context-aware computing with large language models, digital tasks are re-embedded into the rhythm of users’ physical lives. Future work will extend toward long- and short-term memory of emotions and habits, aiming to build a truly frictionless, companion-like digital counterpart."
       }
     ]
-
   },
+  // =========================================================================
+  // Project 2: CloudNotes
+  // =========================================================================
   {
-    "id": 4,
-    "title": "Access Our Community (AOC)",
-    "category": "Social Impact Tech / HCI & Web Engineering",
-    "date": "March 2019",
+    "id": 5,
+    "title": "CloudNotes — AI-Powered Literary Knowledge Management and Conversational Search",
+    "category": "AI / LLM / Information Retrieval / Full-Stack Development",
+    "date": "2026",
     "content": [
       {
         "type": "text",
-        "value": "**Digitalizing Justice: A Real-Time Pro Bono Matching Platform**"
+        "value": "**Beyond Keyword Search: An AI-Powered Literary Knowledge Management and Conversational Retrieval System**\n\n*(CloudNotes is a full-stack AI application designed to help writers and readers collect, organize, and retrieve literary excerpts through semantic understanding and natural-language interaction.)*"
+      },
+      {
+        "type": "image-link",
+        "src": `${process.env.PUBLIC_URL}/banner2.png`,
+        "link": "http://101.37.202.93:3000/",
+        "caption": "Click to try the live demo."
       },
       {
         "type": "text",
-        "value": "### 1. Project Overview\n\n**Access Our Community (AOC)** is a web-based platform designed to revolutionize how legal professionals connect with pro bono opportunities. It serves as an evolution away from manual, email-based communication, aiming to decrease administrative overhead and increase access to justice for vulnerable communities.\n\n* **The Problem:** The traditional pro bono workflow is plagued by \"Email Spaghetti\"—long, non-real-time email chains that lead to missed opportunities and administrative bottlenecks for lawyers and NGOs alike.\n* **The Ecosystem:** The platform connects three key stakeholders: **NGOs** (Service Providers), **Lawyers** (Volunteers), and **Coordinators** (Admins), creating a unified portal for collaboration.\n* **Global Achievement:** This project participated in the **Global Legal Hackathon 2019**, successfully advancing as a **Global Finalist**, ranking among the top 12 teams worldwide."
+        "value": "### 1. Motivation and Core Challenge\n\nTraditional note-taking and search systems work well when users know exactly what they are looking for. Literary material retrieval is fundamentally different: users often remember a **concept, atmosphere, character, emotion, or style**, rather than an exact phrase.\n\nFor example, a writer may search for “Gothic descriptions of women,” “European female beauty,” or “sentences expressing sadness and emptiness.” A conventional keyword search may return text containing related words, while a pure semantic search may retrieve passages that are conceptually similar but violate critical constraints such as **author, location, subject, gender, or expression type**.\n\nCloudNotes therefore treats literary search as an **intent understanding and constraint-aware retrieval problem**, rather than simple keyword matching."
       },
       {
-        "type": "youtube",
-        "videoId": "c768LYh2Xz8",
-        "caption": "Project Introduction & User Journey: This video illustrates the \"Lucy, Justin, and Penny\" persona narrative. Note: Access to YouTube may be restricted in Mainland China."
-      },
-      {
-        "type": "text",
-        "value": "### 2. Core Interaction: The \"Three-Sided\" Market\n\nThe system architecture replaces linear communication with a **Centralized Hub Interaction Model**. The UX is designed around three distinct user journeys that interact seamlessly.\n\n**2.1 The Discovery Loop (For Lawyers)**\nLawyers (like the persona \"Lucy\") no longer need to parse through batch emails. The platform offers a **Real-Time Searchable Database**.\n\n* **Smart Filtering:** Lawyers can filter cases based on \"Interest,\" \"Skills,\" and \"Availability\".\n* **Instant Application:** The system reduces the cognitive load of finding work. A lawyer finds a case, applies, and the status updates instantly, preventing the frustration of applying for already-filled cases.\n\n**2.2 The Management Loop (For NGOs)**\nNGOs (like the persona \"Justin\") act as the \"Quest Givers.\"\n\n* **Screen & Upload:** NGOs screen legal needs and upload them as structured data entries rather than unstructured text in emails.\n* **Network Broadcasting:** Opportunities are shared instantly with their specific network of pro bono lawyers, increasing the \"Capacity\" of these organizations to do high-impact work.\n\n**2.3 The Oversight Loop (For Coordinators)**\nCoordinators (like \"Penny\") manage the firm's resources.\n\n* **Administrative Oversight:** They have a dashboard to approve matches, ensuring no conflict of interest before a lawyer takes a case."
-      },
-      {
-        type: "image",
-        src: `${process.env.PUBLIC_URL}/structure.png`,
-        caption: "The conceptual framework of the AOC platform, illustrating the transformation from systemic friction to data-driven social impact."
+        "type": "image",
+        "src": "/cloudnotes-overview.png",
+        "caption": "CloudNotes system overview: from literary excerpt collection and AI annotation to hybrid retrieval and conversational search"
       },
       {
         "type": "text",
-        "value": "### 3. System Architecture: Solving \"Systemic Friction\"\n\n**The Challenge: Latency & Information Asymmetry**\nPrior to AOC, the workflow was asynchronous. NGOs sent emails → Coordinators reviewed → Forwarded to Lawyers → Lawyers replied. This latency meant clients in need often waited too long.\n\n**3.1 Solution: End-to-End Matching System**\nWe implemented a **Single Portal Architecture**. By centralizing the data:\n\n* **Time Efficiency:** Pro bono lawyers save precious time by eliminating the need to manage email threads.\n* **Timely Access:** The community benefits from faster access to justice because the \"matching\" happens in real-time.\n\n**3.2 Solution: Data-Driven Impact (Analytics)**\nOne of the key technical features is the **Reporting Module**. The system automatically tracks hours and engagement. Users can generate reports to demonstrate their contributions to the community, turning abstract \"goodwill\" into quantifiable metrics."
+        "value": "### 2. AI-Assisted Literary Knowledge Management\n\nCloudNotes provides a structured workspace for building a personal literary knowledge base.\n\n* **AI-powered annotation:** When users save a literary excerpt, the system automatically analyzes the text and generates structured tags covering dimensions such as **author, work, period, location, subject, theme, style, emotion, and expression type**.\n* **Human-in-the-loop refinement:** Automatically generated tags can be manually edited or corrected, allowing users to maintain precise metadata while reducing the cost of manual annotation.\n* **Multi-user management:** Each user maintains an independent literary knowledge base, with authentication and user-level data isolation implemented throughout the application.\n\nThis combination of automatic semantic annotation and human correction transforms unstructured literary excerpts into a searchable, structured corpus."
+      },
+      {
+        "type": "image",
+        "src": "/cloudnotes-annotation.png",
+        "caption": "AI-assisted excerpt annotation: automatically generated literary tags with human-in-the-loop editing"
       },
       {
         "type": "text",
-        "value": "### 4. Industry Recognition & Testimonials\n\nThe platform has been validated by high-profile adoption and feedback from government officials and international law firms.\n\n> \"We see much potential and merit in the adoption of technology solutions such as the AOC platform in the provision of pro bono community legal services. By effectively streamlining the process of matching and linking the pro bono lawyers with the service users, the AOC platform will not only enhance public access to legal advice services, but also bring convenience to participating lawyers and service providers.\"\n> — **Nicholas Chan**, Assistant Director of Administration at Chief Secretary for Administration's Office, Government of Hong Kong\n\n> \"As well as coordinating pro bono opportunities...I have a full workload of legal work and other corporate social responsibility initiatives to handle. So we're interested in working with our existing pro bono partners in trialling technology solutions like the AOC platform that can increase efficiency and streamline the process for connecting our lawyers with pro bono opportunities.\"\n> — **Emile McPhee**, Senior Associate and Chair of CCP Committee for pro bono and CSR activities at McCullough Robertson, Brisbane, Australia\n\n> \"Ashurst, like most law firms, do not have a pro bono team based in Asia. For us, our team is based in London and Sydney. This presents capacity, resourcing and time zone issues. We see the AOC platform as helping to fill those needs. AOC will be a much-needed addition to the pro bono environment in Asia.\"\n> — **Sarah Morton-Ramwell**, Partner and Global Head of Pro Bono Practice and Corporate Responsibility Programme at Ashurst, Sydney, Australia\n\n> \"We're proud that Access Our Community is led by one of our own pro bono committee members who has a track record for growing the network of in-house lawyers engaged in pro bono work. AOC will provide a much-needed platform for enabling lawyers to get easily connected and involved with pro bono opportunities.\"\n> — **Lin Shi**, President of Association of Corporate Counsel, Hong Kong\n\n> \"PathFinders is excited about the prospect of having an NGO-to-law firm matching platform.\"\n> — **Celine Dermine**, Access to Justice Programme Manager, PathFinders, Hong Kong"
+        "value": "### 3. Hybrid Retrieval for Literary Search\n\nThe core retrieval engine combines **keyword matching, structured tag retrieval, and Qwen text embeddings** rather than relying on a single retrieval method.\n\n* **Semantic retrieval:** Literary excerpts and natural-language queries are represented using Qwen text embeddings, enabling retrieval based on semantic meaning rather than exact word overlap.\n* **Structured retrieval:** Explicit constraints such as authors, works, locations, subjects, and expression types are matched against structured metadata.\n* **Query expansion:** The system uses LLM-based query understanding to identify aliases, synonyms, and hierarchical concepts. For example, a query about “Europe” may be expanded to relevant European countries, while semantic concepts such as “sadness” may be expanded to related emotional expressions.\n* **Dynamic ranking:** Retrieval scores combine embedding similarity, lexical matching, tag relevance, constraint coverage, subject matching, gender matching, and expression-type relevance. The weighting strategy changes according to the detected query intent.\n\nThis architecture addresses a key weakness of pure vector search: **high semantic similarity does not necessarily mean that a literary passage satisfies the user's actual search intent.**"
+      },
+      {
+        "type": "text",
+        "value": "### 4. Conversational Literary Search Agent\n\nThe most advanced component of CloudNotes is a **conversational literary search agent** that allows users to search the collection using natural language instead of manually constructing filters.\n\nThe agent transforms an open-ended query into a structured retrieval representation containing **Must / Should / Exclude constraints, query intent, semantic query, target entity, and expression requirements**.\n\nFor example, a request such as “Gothic descriptions of women” is not interpreted simply as a semantic search for *Gothic + women*. The system identifies that the user is specifically looking for **female subjects that are being described**, rather than merely passages from Gothic works containing female characters. It therefore treats subject identity and gender as high-priority constraints during retrieval.\n\nThe retrieval pipeline then performs:\n\n* **Query Understanding:** LLM-based decomposition of natural-language intent into structured constraints.\n* **Candidate Retrieval:** Hybrid retrieval over the user's literary corpus using embeddings, tags, and lexical evidence.\n* **Constraint-aware Ranking:** Candidate scoring based on query-dependent weights and explicit conflict penalties.\n* **LLM Reranking:** A second-stage DeepSeek-based reranker evaluates whether each passage actually satisfies the user's intended subject, gender, expression type, and other hard constraints.\n* **Explanation:** The agent returns concise recommendation reasons together with the retrieved excerpts, allowing users to understand why a passage was selected."
+      },
+      {
+        "type": "image",
+        "src": "/cloudnotes-agent.png",
+        "caption": "Conversational literary search agent: natural-language query understanding, hybrid retrieval, constraint-aware ranking, and LLM reranking"
+      },
+      {
+        "type": "text",
+        "value": "### 5. Full-Stack Architecture and Engineering\n\nCloudNotes was developed as a full-stack AI application using **Next.js and TypeScript**, integrating LLM and embedding services through OpenAI-compatible APIs.\n\n* **Frontend:** Built with Next.js and React, providing interfaces for excerpt management, tag editing, keyword search, semantic search, and conversational interaction.\n* **Backend:** Implemented server-side API routes for authentication, query processing, retrieval, ranking, and LLM orchestration.\n* **AI Infrastructure:** Integrated DeepSeek for query understanding and LLM reranking, and Qwen text embeddings for semantic retrieval.\n* **Data Layer:** Implemented structured storage for excerpts, tags, embeddings, and user relationships, with user-level access control.\n* **Deployment:** Deployed the complete application to **Alibaba Cloud**, integrating the frontend, backend, database, and AI services into a production-ready web application."
       }
     ]
-  },
+  }
 
 ];

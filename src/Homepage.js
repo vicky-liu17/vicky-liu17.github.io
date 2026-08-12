@@ -7,12 +7,14 @@ import { useLang } from './LanguageContext';
 import { translations } from './translations';
 import './Homepage.css';
 
-// Static data that does NOT change with language (ids, images, types)
+// 以后添加新项目，只需在这里增加 { id: 你的新ID, image: 图片路径 }
+// 这里的排列顺序，就是首页实际展现的顺序！
 const portfolioMeta = [
-  { id: 1, image: `${process.env.PUBLIC_URL}/follo-poster.png` },
-  { id: 2, image: `${process.env.PUBLIC_URL}/heart.png` },
-  { id: 3, image: `${process.env.PUBLIC_URL}/banner.png` },
-  { id: 4, image: `${process.env.PUBLIC_URL}/law-concept.png` }
+  { id: 1, image: `${process.env.PUBLIC_URL}/law-concept.png` }, // Access Our Community
+  { id: 2, image: `${process.env.PUBLIC_URL}/heart.png` },       // Remnants of Love
+  { id: 3, image: `${process.env.PUBLIC_URL}/banner.png` },      // AI Piano Evaluator
+  { id: 4, image: `${process.env.PUBLIC_URL}/follo-poster.png` }, // Follo
+  { id: 5, image: `${process.env.PUBLIC_URL}/banner2.png` } // CloudNotes Agent Demo
 ];
 
 const journeyMeta = [
@@ -85,9 +87,9 @@ function Homepage() {
   }, []);
 
   const navItems = [
-    { id: 'about',   icon: <CiCircleInfo />,          label: t.nav.about },
-    { id: 'works',   icon: <MdDesignServices />,       label: t.nav.portfolios },
-    { id: 'journey', icon: <MdOutlineWorkOutline />,   label: t.nav.journey },
+    { id: 'about', icon: <CiCircleInfo />, label: t.nav.about },
+    { id: 'works', icon: <MdDesignServices />, label: t.nav.portfolios },
+    { id: 'journey', icon: <MdOutlineWorkOutline />, label: t.nav.journey },
   ];
 
   return (
@@ -173,17 +175,18 @@ function Homepage() {
               <h2 className="section-heading">{t.sectionWorks}</h2>
             </div>
             <div className="works-grid">
-              {portfolioMeta.map((meta, i) => {
-                const work = t.portfolio[i];
+              {/* 【优化点】使用 [...portfolioMeta].reverse() 倒序遍历，通过 meta.id 取出对应的翻译 */}
+              {[...portfolioMeta].reverse().map((meta) => {
+                const work = t.portfolio[meta.id];
                 return (
                   <Link to={`/projects/${meta.id}`} key={meta.id} className="work-item">
                     <div className="work-img-container">
-                      <img src={meta.image} alt={work.name} />
+                      <img src={meta.image} alt={work?.name} />
                     </div>
                     <div className="work-info">
-                      <span className="work-cat">{work.cat}</span>
-                      <h4 className="work-title">{work.name}</h4>
-                      <p className="work-desc">{work.desc}</p>
+                      <span className="work-cat">{work?.cat}</span>
+                      <h4 className="work-title">{work?.name}</h4>
+                      <p className="work-desc">{work?.desc}</p>
                     </div>
                   </Link>
                 );
@@ -194,28 +197,25 @@ function Homepage() {
           {/* 3. Journey */}
           <section id="journey" className="section-container">
             <h2 className="section-heading">{t.sectionJourney}</h2>
-            
+
             <div className="vertical-timeline">
               <div className="v-track"></div>
-              
+
               {journeyMeta.map((meta, i) => {
                 const item = t.journey[i];
-                // 偶数排左边，奇数排右边
-                const isLeft = i % 2 === 0; 
-                
+                const isLeft = i % 2 === 0;
+
                 return (
                   <div key={i} className={`v-node ${isLeft ? 'v-left' : 'v-right'}`}>
                     <div className="v-marker">
                       {meta.type === 'edu' ? <MdSchool /> : <MdWork />}
                     </div>
-                    
+
                     <div className="v-card">
                       <span className="v-period">{item.period}</span>
                       <h3 className="v-title">{item.title}</h3>
                       <div className="v-place">{item.place}</div>
                       <span className="v-loc">{item.location}</span>
-                      {/* 如果未来你想在 translations.js 里加描述，直接在这里取消注释即可： */}
-                      {/* {item.desc && <p className="v-desc">{item.desc}</p>} */}
                     </div>
                   </div>
                 );
